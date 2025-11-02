@@ -28,51 +28,55 @@ if (isset($_POST['login'])) {
 
 ?>
 
-
 <?php include('layouts/header.php') ?>
 
 <!--Login-->
 <section class="my-5 py-5">
-
     <div class="container text-center mt-3 pt-5">
-        <h2 class="font-weight-bold">Login</h2>
-        <br class="mx-auto">
+        <p class="fw-bold p-0 m-0 fs-6">Chào mừng bạn đến với</p>
+        <p class="login_name-shop fw-bold text-uppercase fs-2 ls-lg">Rakuten</p>
     </div>
-    <div class="mx-auto container">
-        <form id="login-form" action="login.php" method="POST">
-            <?php if (isset($_GET['status'])): ?>
-            <div class="alert alert-success" role="alert">
-                <p>
-                    <?php echo $_GET['status']; ?>
-                </p>
+
+    <form class="p-2 login-form-wrapper" id="login-form" action="login.php" method="POST">
+        <div class="lgf-wrapper mx-auto container">
+            <div class="container text-center text-uppercase mb-3">
+                <div class="lg-img d-flex text-center mx-auto" style="width: 100px; height: 100px;"><img src="./assets/images/icon-114x114.png" alt=""></div>
+                <h2 class="font-weight-bold">Đăng nhập</h2>
             </div>
+            <?php if (isset($_GET['status'])): ?>
+                <div class="alert alert-success" role="alert">
+                    <p class="m-0">
+                        <?php echo $_GET['status']; ?>
+                    </p>
+                </div>
             <?php endif; ?>
             <?php if (isset($_GET['error'])): ?>
-            <div class="alert alert-danger" role="alert">
-                <p>
-                    <?php echo $_GET['error']; ?>
-                </p>
-            </div>
+                <div class="alert alert-danger" role="alert">
+                    <p class="m-0">
+                        <?php echo $_GET['error']; ?>
+                    </p>
+                </div>
             <?php endif; ?>
 
             <div class="form-group">
-
                 <input type="text" placeholder="Email" id="email" name="email" class="form-control">
             </div>
             <div class="form-group">
 
-                <input type="password" placeholder="Password" id="password" name="password" class="form-control">
+                <input type="password" placeholder="Mật khẩu" id="password" name="password" class="form-control">
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" name="login" class="btn" id="login">
+                <input type="submit" value="Đăng nhập" name="login" class="btn-dark bg-success" id="login" onfocus="this.style.boxShadow='none'; this.style.outline='none'; this.style.borderColor='none';">
             </div>
             <div class="form-group">
-                <a id="register-url" class="btn-text" href="register.php">Don't have account? Register</a>
+                <p class="register-txt">Bạn chưa có tài khoản? <a id="register-url" class="btn-text d-inline-flex" href="register.php">Đăng ký ngay!</a></p>
+
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
 </section>
+
 
 
 <?php include('layouts/footer.php') ?>

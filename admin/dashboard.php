@@ -1,8 +1,23 @@
 <?php
+
+session_start();
+
+// Kiểm tra đăng nhập
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header("Location: login.php");
+    exit;
+}
+
+
+
+
+
+
+
 include('../admin/layouts/app.php');
 
 // Kết nối cơ sở dữ liệu với mysqli
-$conn = mysqli_connect('localhost', 'root', '1234', 'php_project');
+$conn = mysqli_connect('localhost', 'root', '', 'php_project');
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -57,7 +72,7 @@ mysqli_close($conn); // Đóng kết nối sau khi truy vấn xong
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Dashboard</h1>
+                    <h1>Bảng điều khiển</h1>
                 </div>
                 <div class="col-sm-6"></div>
             </div>
@@ -73,12 +88,12 @@ mysqli_close($conn); // Đóng kết nối sau khi truy vấn xong
                     <div class="small-box card">
                         <div class="inner">
                             <h3><?php echo $totalOrders; ?></h3>
-                            <p>Total Orders</p>
+                            <p>Tất cả đơn hàng</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer text-dark">More info <i
+                        <a href="#" class="small-box-footer text-dark">Chi tiết hơn <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -87,12 +102,12 @@ mysqli_close($conn); // Đóng kết nối sau khi truy vấn xong
                     <div class="small-box card">
                         <div class="inner">
                             <h3><?php echo $totalCustomers; ?></h3>
-                            <p>Total Customers</p>
+                            <p>Tất cả khách hàng</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer text-dark">More info <i
+                        <a href="#" class="small-box-footer text-dark">Chi tiết hơn <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -102,7 +117,7 @@ mysqli_close($conn); // Đóng kết nối sau khi truy vấn xong
                         <div class="inner">
                             <h3><?php echo number_format($totalSales, 3);
                                 ?> VND</h3>
-                            <p>Total Sale</p>
+                            <p>Tổng doanh thu</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>

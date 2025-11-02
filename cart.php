@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 session_start();
 calculateTotalCart();
@@ -17,6 +17,7 @@ if (isset($_POST['add_to_cart'])) {
             $product_array = array(
                 'product_id' => $_POST['product_id'],
                 'product_name' => $_POST['product_name'],
+                'product_size' => $_POST['product_size'],
                 'product_image' => $_POST['product_image'],
                 'product_price' => $_POST['product_price'],
                 'product_quantity' => $_POST['product_quantity']
@@ -30,6 +31,7 @@ if (isset($_POST['add_to_cart'])) {
         $product_array = array(
             'product_id' => $_POST['product_id'],
             'product_name' => $_POST['product_name'],
+            'product_size' => $_POST['product_size'],
             'product_image' => $_POST['product_image'],
             'product_price' => $_POST['product_price'],
             'product_quantity' => $_POST['product_quantity']
@@ -54,10 +56,13 @@ if (isset($_POST['add_to_cart'])) {
     $product_array['product_quantity'] = $product_quantity;
     // return array
     $_SESSION['cart'][$product_id] = $product_array;
-} else {
-    echo "Your cart is empty";
-}
 
+
+    
+} else {
+    echo "<p>Your cart is empty.</p>";
+    echo "<img src='../assets/images/logo_hnl.jpg' alt='Empty Cart' />";
+}
 
 
 function calculateTotalCart()
@@ -75,29 +80,33 @@ function calculateTotalCart()
     }
 }
 
-
-
-
-
-?>
-
-
+?> -->
 
 
 
 <?php include('layouts/header.php') ?>
 
-<!-- Cart-->
 
+
+
+<!-- Cart-->
 <section class="cart container my-5 pt-5">
 
     <div class="container mt-5">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
+                </ol>
+                </nav>
         <h2 class="font-weight-bold">Your Cart</h2>
     </div>
 
     <table class="mt-3 pt-5">
         <tr>
             <th>Product</th>
+            <th>Size</th>
             <th>Quantity</th>
             <th>Price</th>
             <th>Action</th>
@@ -109,25 +118,48 @@ function calculateTotalCart()
                 <tr>
                     <td>
                         <div class="product-info">
-                            <img src="/assets/images/<?php echo $value['product_image']; ?>"
+                            <img src="./assets/images/<?php echo $value['product_image']; ?>"
                                 alt="<?php echo $value['product_name']; ?>">
                             <div>
                                 <p class="pt-4"><?php echo $value['product_name']; ?></p>
                             </div>
+
                         </div>
                     </td>
+                    <td>
+                        <div>
+                            <p class="pt-4">
+                                <?php 
+                                if ($value['product_size'] == 1) {
+                                    echo "S";
+                                } elseif ($value['product_size'] == 2) {
+                                    echo "M";
+                                } elseif ($value['product_size'] == 3) {
+                                    echo "L";
+                                } elseif ($value['product_size'] == 4) {
+                                    echo "XL";
+                                } else {
+                                    echo "Pre Size"; // Giá trị mặc định nếu không khớp
+                                }
+                                ?>
+                            </p>
+                        </div>
+                    </td>
+
 
                     <td>
                         <form action="cart.php" method="POST">
                             <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
+                     
                             <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>"
                                 min="1">
-                            <button type="submit" name="update_quantity" class="remove-btn rounded-2">Update</button>
+                                <button type="submit" name="update_quantity" class="remove-btn rounded-2">Update</button>
                         </form>
                     </td>
 
                     <td>
-                        <p><?php echo $value['product_price']; ?> VND</p>
+                    <p><?php echo $value['product_price']; ?></p>
+
                     </td>
                     <td>
                         <form action="cart.php" method="POST">
@@ -136,7 +168,7 @@ function calculateTotalCart()
                         </form>
                     </td>
                     <td>
-                        <p><?php echo number_format($value['product_price'] * $value['product_quantity'], 3, '.', '.'); ?> VND
+                    <p><?php echo number_format($_SESSION['total'], 3, '.', '.') . ' VND'; ?> 
                         </p>
                     </td>
                 </tr>
@@ -167,7 +199,6 @@ function calculateTotalCart()
     <?php } ?>
 
 </section>
-
 
 
 <?php include('layouts/footer.php') ?>

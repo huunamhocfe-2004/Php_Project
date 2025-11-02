@@ -1,0 +1,38 @@
+
+.product-status {
+    display: inline-block;
+    padding: 5px 15px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    position: absolute; 
+    top: 10px;
+    left: 0px;
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.product-status i {
+    margin-right: 5px;
+}
+
+/* Màu sắc trạng thái */
+.product-status.in-stock {
+    background-color: #28a745;
+}
+
+.product-status.new-product {
+    background-color: #fd7e14;
+}
+
+.product-status.pre-order {
+    background-color: #17a2b8;
+}
+
+.product-status.sold-out {
+    background-color: #ff4d4d;
+}
+
+.badge {
+    z-index: 10 !important;
+}

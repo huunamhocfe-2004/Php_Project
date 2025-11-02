@@ -76,7 +76,7 @@ if (isset($_GET['user_id'])) {
                 </div>
                 <div class="pb-5 pt-3">
                     <button class="btn btn-primary" name="update_user">Update</button>
-                    <a href="users.html" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <a href="list_users.php" class="btn btn-outline-dark ml-3">Cancel</a>
                 </div>
             </div>
         </form>

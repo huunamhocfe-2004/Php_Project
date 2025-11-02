@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel Shop :: Administrative Panel</title>
+    <title>TuanTr Admin</title>
+    <link href='../admin/img/favicon-16x16.png' rel='icon' type='image/x-icon' />
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,6 +14,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -43,19 +47,31 @@
                         <img src="img/avatar5.png" class='img-circle elevation-2' width="40" height="40" alt="">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-3">
-                        <h4 class="h4 mb-0"><strong>Mohit Singh</strong></h4>
-                        <div class="mb-3">example@example.com</div>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <!-- <h4 class="h4 mb-0"><strong>Mohit Singh</strong></h4>
+                        <div class="mb-3">example@example.com</div> -->
+                        <p><strong>Tên:</strong> <span>
+                                <?php echo !empty($_SESSION['admin_name']) ? htmlspecialchars($_SESSION['admin_name']) : 'Không có dữ liệu'; ?>
+                            </span></p>
+                        <p><strong>Email:</strong> <span>
+                                <?php echo !empty($_SESSION['admin_email']) ? htmlspecialchars($_SESSION['admin_email']) : 'Không có dữ liệu'; ?>
+                            </span></p>
+
+
+                        <!-- <div class="dropdown-divider"></div>
+                        <a href="setting.php" class="dropdown-item">
                             <i class="fas fa-user-cog mr-2"></i> Settings
+                        </a> -->
+                        <div class="dropdown-divider"></div>
+                        <a href="change_password.php" class="dropdown-item">
+                            <i class="fas fa-lock mr-2"></i> Đổi mật khẩu
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-lock mr-2"></i> Change Password
+                        <a href="register_admin.php" class="dropdown-item">
+                            <i class="fas fa-user-plus"></i> Đăng ký
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="login.php" class="dropdown-item text-danger">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        <a href="logout.php" class="dropdown-item text-danger">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
                         </a>
                     </div>
                 </li>

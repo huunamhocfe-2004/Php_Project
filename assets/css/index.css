@@ -1,0 +1,217 @@
+
+/* CSS cho breadcrumb container */
+.breadcrumb {
+    background-color: #f8f9fa;      /* Màu nền sáng */
+    padding: 10px 10px;             /* Khoảng cách trong breadcrumb */
+    border-radius: 10px;             /* Bo góc mềm mại */
+    margin-top: 20px;               /* Khoảng cách trên để tách khỏi phần header */
+    font-size: 12px;                /* Kích thước chữ nhỏ hơn */
+    list-style: none;               /* Loại bỏ dấu đầu dòng */
+    display: flex;                  /* Căn các mục breadcrumb thành hàng ngang */
+    gap: 1px;                       /* Khoảng cách giữa các mục */
+    align-items: center;            /* Căn giữa dọc các mục */
+}
+
+/* Định dạng cho các mục breadcrumb */
+.breadcrumb-item {
+    color: #6c757d;                 /* Màu chữ mặc định cho breadcrumb */
+    font-style: italic;             /* Làm chữ nghiêng */
+}
+
+/* Liên kết trong breadcrumb (bỏ gạch chân) */
+.breadcrumb-item a {
+    color: #000;                    /* Màu chữ cho link */
+    text-decoration: none;          /* Xóa gạch chân cho link */
+    transition: color 0.3s ease;    /* Hiệu ứng khi hover */
+    font-style: italic;             /* Làm chữ nghiêng cho link */
+}
+
+.breadcrumb-item a:hover {
+    color: #0056b3;                 /* Màu khi rê chuột qua link */
+    text-decoration: underline;     /* Thêm gạch chân khi hover */
+}
+
+/* Hiển thị dấu phân cách ">" giữa các mục breadcrumb */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";                   /* Dấu phân cách */
+    color: #6c757d;                 /* Màu dấu phân cách */
+    padding: 0 8px;                 /* Khoảng cách bên trái và phải của dấu */
+}
+
+/* Mục breadcrumb hiện tại */
+.breadcrumb-item.active {
+    color: #212529;                 /* Màu chữ cho mục hiện tại */
+    font-style: normal;             /* Không nghiêng cho mục hiện tại */
+}
+#banner_slider {
+    position: relative;
+    margin-top: 80px !important;
+}
+/* Phần form tìm kiếm (Search Section) */
+#search {
+    background-color: #ffffff; /* Đặt nền giống với nền của trang web */
+    padding: 20px; /* Khoảng cách của các phần tử trong form */
+    border-radius: 0; /* Loại bỏ viền cong */
+    box-shadow: none; /* Loại bỏ hiệu ứng đổ bóng */
+}
+
+/* Các phần tử trong search form */
+#search .form-check {
+    background-color: #ffffff; /* Đảm bảo các mục chọn có màu nền giống */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 0; /* Loại bỏ viền cong */
+}
+
+#search .form-check input[type="radio"] {
+    accent-color: #007bff; /* Màu nút radio */
+}
+
+#search .form-check label {
+    font-weight: bold;
+    color: #333;
+}
+.ls-lg {
+    letter-spacing: 10px;
+}
+.slider-img {
+  height: 650px; /* 👈 chỉnh chiều cao mong muốn ở đây */
+  position: relative;
+  overflow: hidden;
+}
+.slider-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Nút submit */
+#search .form-group input[type="submit"] {
+    background-color: #007bff; /* Màu xanh cho nút submit */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search .form-group input[type="submit"]:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+/* Thanh range */
+#search input[type="range"] {
+    width: 100%;
+    background-color: #f4f4f4; /* Màu nền cho thanh range */
+    border-radius: 0; /* Loại bỏ viền cong */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#search input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #ddd; /* Màu cho đường chạy của thanh range */
+}
+
+#search input[type="range"]::-webkit-slider-thumb {
+    background-color: #007bff; /* Màu cho nút trượt */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#search input[type="range"]:focus {
+    outline: none; /* Tắt viền khi focus */
+}
+
+/* Đảm bảo phần nội dung bên phải (Products Section) không bị thay đổi */
+#products {
+    background-color: transparent; /* Không thay đổi nền của phần sản phẩm */
+}
+
+/* Đảm bảo sản phẩm không bị ảnh hưởng */
+.product {
+    background-color: transparent; /* Sản phẩm không thay đổi nền */
+}
+
+/* Pagination section */
+.pagination {
+    background-color: transparent; /* Màu nền của phần phân trang */
+}
+
+.pagination .page-item {
+    background-color: transparent; /* Đảm bảo các nút phân trang có nền giống */
+}
+.product {
+    width: 300px !important;
+}
+.list_product-container {
+    position: relative;
+    border: 1px dashed #000;
+}
+.list_product-container .list_product-txt {
+    position: absolute;
+    font-size: 20px;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    padding: 10px 20px;
+    font-weight: 600;
+    background-color: #000;
+    color: #fff;
+    border: 1px dashed #000;
+    z-index: 11;
+}
+.square-img {
+  aspect-ratio: 1 / 1;  
+  object-fit: cover;    
+  border-radius: 10px;   
+}
+#login-form .lgf-wrapper {
+    width: 50%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+}
+#login-form .lgf-wrapper .form-group:nth-last-of-type(n+3) input {
+    transition: .2s linear;
+    outline: none;
+    border-left: 4px solid transparent;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+#login-form .lgf-wrapper .form-group:nth-last-of-type(n+3) input:focus {
+    outline: none !important;
+    /* box-shadow: -2px 0 0 0 #000; */
+    /* border-bottom: 1px solid #e0e0e0d3; */
+    border-color: black;
+    transition: .2s linear;
+}
+#register-form .lgf-wrapper {
+    width: 50%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+#register-form .lgf-wrapper .form-group:nth-last-of-type(n+3) input {
+    transition: .2s linear;
+    outline: none;
+    border-left: 4px solid transparent;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+#register-form .lgf-wrapper .form-group:nth-last-of-type(n+3) input:focus {
+    outline: none !important;
+    /* box-shadow: -2px 0 0 0 #000; */
+    /* border-bottom: 1px solid #e0e0e0d3; */
+    border-color: black;
+    transition: .2s linear;
+}

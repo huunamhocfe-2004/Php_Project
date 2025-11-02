@@ -64,8 +64,8 @@ else if (isset($_POST['update_category'])) {
                                     <!-- Hidden input to pass category_id -->
                                     <input type="hidden" name="category_id"
                                         value="<?php echo $categories['category_id']; ?>">
-                                </div>
-                            </div>
+                                
+                        </div></div>
                             <?php }
                             } ?>
                         </div>
@@ -73,7 +73,7 @@ else if (isset($_POST['update_category'])) {
                 </div>
                 <div class="pb-5 pt-3">
                     <button class="btn btn-primary" name="update_category">Update</button>
-                    <a href="list_categorys.php" class="btn btn-outline-dark ml-3">Cancel</a> <!-- Corrected link -->
+                    <a href="list_categorys.php" class="btn btn-primary">Cancel</a>
                 </div>
             </div>
         </form>

@@ -1,0 +1,180 @@
+   /* Footer Styles */
+footer {
+    background-color: #333;  /* Nền tối cho footer */
+    color: #f1f1f1;  /* Màu chữ sáng */
+}
+.footer_logo img {
+    background-color: #fff;
+    border-radius: 50%;
+}
+.footer_logo #btn-back-top {
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 7px 10px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.footer_logo .list_follow>li {
+    margin: 0;
+}
+.footer_logo .list_follow>li:hover a {
+    transform: scale(1.2);
+    transition: .2s linear;
+}
+.footer_logo .list_follow>li:nth-child(1):hover a i{
+    color: #1877F2;
+}
+.footer_logo .list_follow>li:nth-child(2):hover a i{
+    color: #0A66C2;
+}
+.footer_logo .list_follow>li:nth-child(3):hover a i{
+    color: #1DA1F2;
+}
+.footer_logo .list_follow>li:nth-child(4):hover a i{
+    color: #E4405F;
+}
+.footer_logo .list_follow>li>a {
+    font-size: 20px;
+    padding: 10px;
+    transition: .2s linear;
+
+}
+.footer_logo .list_follow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.footer-one ul {
+    padding: 0;
+    list-style: none; /* Loại bỏ dấu chấm đầu dòng */
+}
+
+.footer-one ul li {
+    margin-bottom: 10px; /* Khoảng cách giữa các mục */
+}
+
+.footer-one ul li a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: inherit; /* Giữ màu chữ giống với văn bản mặc định */
+    display: block; /* Đảm bảo liên kết chiếm toàn bộ diện tích của li */
+    color: #fff !important;
+}
+.footer-one ul li a:hover {
+    transform: translateX(5px);
+    transition: .3s linear;
+}
+
+.footer-one ul li a:hover {
+    color: #007bff; /* Thêm hiệu ứng hover nếu muốn */
+}
+
+/* Footer container */
+footer .row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer columns */
+footer .footer-one {
+    margin-bottom: 30px;
+}
+
+footer .footer-one h3, footer .footer-one h5 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #fff;
+    text-transform: uppercase;
+    color: #00bcd4;  /* Màu xanh để nổi bật */
+}
+
+footer .footer-one ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer .footer-one ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+footer .footer-one ul li:hover {
+    color: #00bcd4;
+}
+
+/* Footer image */
+footer .footer-one img {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+/* Footer contact section */
+footer .footer-one .text-uppercase {
+    font-weight: 700;
+    color: #fff;
+}
+
+footer .footer-one p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* Social media icons */
+footer .icon i {
+    font-size: 24px;
+    color: #fff;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .icon i:hover {
+    color: #00bcd4;
+    transform: scale(1.2);
+}
+
+/* Copyright section */
+footer .copyright {
+    background-color: #222;
+    padding: 10px;
+}
+
+footer .copyright p {
+    font-size: 16px;
+    color: #fff;
+}
+
+footer .copyright .icon {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+    footer .row {
+        text-align: center;
+    }
+
+    footer .footer-one {
+        margin-bottom: 20px;
+    }
+
+    footer .footer-one h3, footer .footer-one h5 {
+        font-size: 20px;
+    }
+
+    footer .footer-one ul li {
+        font-size: 14px;
+    }
+
+    footer .icon i {
+        font-size: 20px;
+        margin: 0 10px;
+    }
+}

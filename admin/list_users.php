@@ -30,16 +30,10 @@ $users = $stmt->get_result();
             <div class="card">
                 <div class="card-header">
                     <div class="card-tools">
-                        <div class="input-group input-group" style="width: 250px;">
-                            <input type="text" name="table_search" class="form-control float-right"
-                                placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+                    <form class="d-flex" action="../admin/search_user.php" method="GET">
+                        <input class="form-control me-2" type="search" name="query_admin" placeholder="Search Products" aria-label="Search" required>
+                        <button class="btn btn-outline-dark" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -57,18 +51,19 @@ $users = $stmt->get_result();
                         <thead>
                             <tr>
                                 <th width="60">ID</th>
-                                <th>Name</th>
+                                <th>Tên</th>
                                 <th>Email</th>
-                                <th>Password</th>
-                                <th width="100">Status</th>
-                                <th width="100">Actions</th>
+                                <th>Mật khẩu</th>
+                                <th width="100">Trạng thái</th>
+                                <th width="100">Tùy chọn</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($users as $user) { ?>
+                            <?php  $stt = 1;
+                            foreach ($users as $user) { ?>
                             <tr>
                                 <td>
-                                    <?php echo $user['user_id'] ?>
+                                    <?php echo $stt++; ?>
                                 </td>
                                 <td> <?php echo $user['user_name'] ?></td>
                                 <td> <?php echo $user['user_email'] ?></td>

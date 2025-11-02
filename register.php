@@ -62,41 +62,46 @@ if (isset($_POST['register'])) {
 <section class="my-5 py-5">
 
     <div class="container text-center mt-3 pt-5">
-        <h2 class="font-weight-bold text-uppercase">Register</h2>
-        <br class="mx-auto">
+        <p class="fw-bold p-0 m-0 fs-6">Chào mừng bạn đến với</p>
+        <p class="login_name-shop fw-bold text-uppercase fs-2 ls-lg">Rakuten</p>
     </div>
-    <div class="mx-auto container">
-        <form id="login-form" action="register.php" method="POST">
-
-            <?php if (isset($_GET['error'])): ?>
-                <div class="alert alert-danger" role="alert">
-                    <p>
-                        <?php echo $_GET['error']; ?>
-                    </p>
+    <div class="container">
+        <form class="p-2 register-form-wrapper" id="register-form" action="register.php" method="POST">
+            <div class="lgf-wrapper mx-auto container">
+                <div class="container text-center text-uppercase mb-3">
+                    <div class="lg-img d-flex text-center mx-auto" style="width: 100px; height: 100px;"><img src="./assets/images/icon-114x114.png" alt=""></div>
+                    <h2 class="font-weight-bold">Đăng ký</h2>
                 </div>
-            <?php endif; ?>
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <p>
+                            <?php echo $_GET['error']; ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
 
 
-            <div class="form-group">
-                <input type="text" placeholder="UserName" id="user_name" name="user_name" class="form-control" required>
-            </div>
-            <div class="form-group">
+                <div class="form-group">
+                    <input type="text" placeholder="Tên đăng nhập" id="user_name" name="user_name" class="form-control" required>
+                </div>
+                <div class="form-group">
 
-                <input type="text" placeholder="Email" id="email" name="email" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Password" id="password" name="password" class="form-control"
-                    required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Confirm Password" id="confirm_password" name="confirm_password"
-                    class="form-control" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Register" name="register" class="btn" id="register">
-            </div>
-            <div class="form-group">
-                <a id="register-url" class="btn-text" href="login.php">Do have account? Login</a>
+                    <input type="text" placeholder="Email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Mật khẩu" id="password" name="password" class="form-control"
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Nhập lại mật khẩu" id="confirm_password" name="confirm_password"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Đăng ký" name="register" class="btn bg-primary" id="register"  onfocus="this.style.boxShadow='none'; this.style.outline='none'; this.style.borderColor='none';">
+                </div>
+                <div class="form-group">
+                    <p class="register-txt">Bạn đã có tài khoản? <a id="register-url" class="btn-text d-inline-flex" href="login.php">Đăng nhập</a></p>
+                </div>
             </div>
         </form>
     </div>

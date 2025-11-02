@@ -56,7 +56,7 @@ if (isset($_POST['create_user'])) {
                                 <div class="mb-3">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" id="password" class="form-control"
-                                        placeholder="Email">
+                                        placeholder="Password">
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ if (isset($_POST['create_user'])) {
                 </div>
                 <div class="pb-5 pt-3">
                     <button class="btn btn-primary" name="create_user">Create</button>
-                    <a href="users.html" class="btn btn-outline-dark ml-3">Cancel</a>
+                    <a href="list_users.php" class="btn btn-outline-dark ml-3">Cancel</a>
                 </div>
             </div>
         </form>

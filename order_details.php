@@ -12,6 +12,7 @@ if (isset($_GET['logout'])) {
     }
 }
 
+
 // Fetch order details if order_id is set
 $order_details = null;
 if (isset($_POST['order_details']) && isset($_POST['order_id'])) {
@@ -31,69 +32,90 @@ if (isset($_POST['order_details']) && isset($_POST['order_id'])) {
     echo "No order ID provided.";
     exit;
 }
+
+
 ?>
 
 <?php include('layouts/header.php') ?>
 <!--Account page-->
 <section class="my-5 py-5">
     <div class="row container mx-auto">
+           <!-- Breadcrumb -->
+           <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
+                <li class="breadcrumb-item"><a href="account.php">My Account</a></li>
+                <li class="breadcrumb-item"><a href="my_orders.php">My Orders</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Your Order</li>
+            </ol>
+        </nav>
         <div class="info text-center col-md-6 col-lg-12 col-sm-12">
-            <h3 class="font-weight-bold text-center text-uppercase">My Account</h3>
+
             <div class="account-profile">
-                <div class="account-info col-lg-6 col-sm-12">
-                    <ul id="account-panel" class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a href="account.php" class="nav-link font-weight-bold" role="tab" aria-controls="tab-login"
-                                aria-expanded="false">
-                                <i class="fas fa-user-alt"></i> My Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="account.php" class="nav-link font-weight-bold" role="tab" aria-controls="tab-login"
-                                aria-expanded="false">
-                                <i class="fas fa-shopping-bag"></i> My Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="account.php?logout=1" class="nav-link font-weight-bold" role="tab"
-                                aria-controls="tab-login" aria-expanded="false">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+               
 
-                <div class="account-update col-lg-6 col-md-6">
-                    <h3 class="text-uppercase">Your Orders</h3>
-                    <table class="orders mt-5">
+            <div class="account-update col-lg-12 col-md-12"> <!-- Đã thay đổi col-lg-6 thành col-lg-12 để chiếm toàn bộ chiều rộng -->
+    <h3 class="text-uppercase">Your Orders</h3>
+
+    <div class="table-container">
+        <table class="orders mt-5">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Product Price</th>
+                    <th>Qty</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($order_details && $order_details->num_rows > 0) {
+                    while ($row = $order_details->fetch_assoc()) { ?>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Product</th>
-                            <th>Product Price</th>
-                            <th>Order Date</th>
+                            <td><?php echo $row['order_id']; ?></td>
+                            <td>
+                                <div class="product-info">
+                                    <img class="img-fluid" src="./assets/images/<?php echo $row['product_image']; ?>" alt="Product Image">
+                                    <?php echo $row['product_name']; ?>
+                                </div>
+                            </td>
+                            <td>
+                                <?php
+                                // Kiểm tra giá trị của product_size và hiển thị size tương ứng
+                                switch ($row['product_size']) {
+                                    case 1:
+                                        echo 'S';
+                                        break;
+                                    case 2:
+                                        echo 'M';
+                                        break;
+                                    case 3:
+                                        echo 'L';
+                                        break;
+                                    case 4:
+                                        echo 'XL';
+                                        break;
+                                    default:
+                                        echo 'Pre Size';
+                                        break;}?>   
+                            </td>
+                            <td>
+                                <?php echo number_format($row['product_price'], 0, '.', '.'); ?>
+                            </td>
+
+                            <td><?php echo $row['product_quantity']; ?></td>
+                            <td><?php echo $row['order_date']; ?></td>
                         </tr>
+                <?php }
+                } else {
+                    echo "<tr><td colspan='6'>No orders found.</td></tr>";
+                } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-                        <?php if ($order_details && $order_details->num_rows > 0) {
-                            while ($row = $order_details->fetch_assoc()) { ?>
-                                <tr>
-                                    <td><?php echo $row['order_id']; ?></td>
-                                    <td>
-                                        <div class="product-info">
-
-                                            <img class="img-fluid" width="50px" height="50px"
-                                                src="/assets/images/<?php echo $row['product_image']; ?>">
-                                            <?php echo $row['product_name']; ?>
-                                        </div>
-                                    </td>
-                                    <td><?php echo $row['product_price']; ?></td>
-                                    <td><?php echo $row['order_date']; ?></td>
-                                </tr>
-                        <?php }
-                        } else {
-                            echo "<tr><td colspan='4'>No orders found.</td></tr>";
-                        } ?>
-                    </table>
-                </div>
 
             </div>
         </div>
