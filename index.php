@@ -9,7 +9,7 @@ include('layouts/header.php');
 
 ?>
 
-<div id="banner_slider" class="banner_slider mb-5">
+<div id="banner_slider" class="banner_slider mb-2">
     <div id="homeSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -46,9 +46,73 @@ include('layouts/header.php');
     </div>
 
 </div>
+<div class="slogan_slider my-2 py-2">
+    <p class="slogan-txt">
+        “Wear your vibe.” 
+    </p>
+    <p class="slogan-txt">
+        “Mặc là phải chất.”
+    </p>
+    <p class="slogan-txt">
+        “Thời trang không chỉ là quần áo, mà là thái độ.”
+    </p>
+    <p class="slogan-txt">
+        “Be bold. Be you.”
+    </p>
+    <p class="slogan-txt">
+        “Phong cách sinh ra từ bạn.”</p>
+    </p>
+</div>
 
-<div class="container  p-5 list_product-container mb-5">
-    <div class="list_product-txt">Sản phẩm mới</div>
+<div class="container  p-5 list_product-container my-5">
+    <div class="list_product-txt" style="background-color: #FF4500;">Sản phẩm bán chạy</div>
+    <div class="list_product-wrapper px-2 py-2">
+        <div class="row gap-2">
+            <?php include('server/get_hot_product.php'); ?>
+
+            <?php while ($row = $featured_product->fetch_assoc()) {  ?>
+                <div class="product text-center col-lg-3 col-md-6 col-sm-12">
+                    <a href="single_product.php?product_id=<?php echo $row['product_id']; ?>" class="product-link">
+                        <div class="img-container">
+                            <div class="product-status hot-product"> <!-- Hiển thị label "New Product" -->
+                                Hot
+                            </div>
+                            <!-- Ảnh sản phẩm chính -->
+                            <img class="img-fluid mb-3" src="./assets/images/<?php echo $row['product_image']; ?>">
+
+                            <!-- Ảnh sản phẩm thứ hai sẽ xuất hiện khi hover -->
+                            <img class="img-fluid img-second" src="./assets/images/<?php echo $row['product_image2']; ?>">
+                        </div>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="p-product"><?php echo $row['product_name']; ?></h3>
+                        <p class="p-price"><?php echo number_format($row['product_price'], 0, '.', '.') . ' VND'; ?></p>
+                        <p class="p-price-discount">
+                            <?php
+                            if ($row['product_price_discount'] != 0) {
+                                // Định dạng giá với dấu chấm cách 3 chữ số và thêm "VND"
+                                echo number_format($row['product_price_discount'], 0, '.', '.') . ' VND';
+                            } else {
+                                echo ''; // Hiển thị khoảng trống nếu giá giảm bằng 0
+                            }
+                            ?>
+                        </p>
+                    </a>
+                    <a href="single_product.php?product_id=<?php echo $row['product_id'] ?>">
+
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<div class="container  p-5 list_product-container my-5">
+    <div class="list_product-txt" style="background-color: #00C4CC;">Sản phẩm mới</div>
     <div class="list_product-wrapper px-2 py-2">
         <div class="row gap-2">
             <?php include('server/get_featured_product.php'); ?>
@@ -58,7 +122,7 @@ include('layouts/header.php');
                     <a href="single_product.php?product_id=<?php echo $row['product_id']; ?>" class="product-link">
                         <div class="img-container">
                             <div class="product-status new-product"> <!-- Hiển thị label "New Product" -->
-                                Mới
+                                New Product
                             </div>
                             <!-- Ảnh sản phẩm chính -->
                             <img class="img-fluid mb-3" src="./assets/images/<?php echo $row['product_image']; ?>">
@@ -174,7 +238,7 @@ $products = $stmt->get_result();
 ?>
 
 <div class="container p-5 list_product-container">
-    <div class="list_product-txt">Tất cả sản phẩm</div>
+    <div class="list_product-txt" style="background-color: #6C757D;">Tất cả sản phẩm</div>
     <div class="list_product-wrapper px-2 py-2">
         <div class="row gap-2 justify-content-between">
             <!-- Products Section -->

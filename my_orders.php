@@ -54,17 +54,18 @@ if (isset($_SESSION['logged_in'])) {
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a href="account.php" class="nav-link font-weight-bold">
-                        <i class="fas fa-user-alt"></i> My Account
+                        <i class="fa-solid fa-user mx-2"></i> Tài khoản
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="my_orders.php" class="nav-link font-weight-bold active">
-                        <i class="fas fa-shopping-bag"></i> My Orders
+                        <i class="fa-solid fa-cart-shopping mx-2"></i> Đơn hàng
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="account.php?logout=1" class="nav-link font-weight-bold">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                                                    <i class="fa-solid fa-right-from-bracket mx-2"></i> Đăng xuất
+
                     </a>
                 </li>
             </ul>
@@ -72,16 +73,16 @@ if (isset($_SESSION['logged_in'])) {
 
         <!-- Bảng đơn hàng -->
         <div class="account-update text-center">
-            <h3 class="text-uppercase mb-4">Your Orders</h3>
+            <h3 class="text-uppercase mb-4">Đơn hàng của bạn</h3>
             <table class="orders mx-auto">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
-                        <th>Order Cost</th>
-                        <th>Quantity</th>
-                        <th>Order Status</th>
-                        <th>Order Date</th>
-                        <th>Order Details</th>
+                        <th>ID</th>
+                        <th>Giá đơn hàng</th>
+                        <th>Số lượng</th>
+                        <th>Trạng thái đơn</th>
+                        <th>Ngày đặt</th>
+                        <th>Chi tiết</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,7 +112,7 @@ if (isset($_SESSION['logged_in'])) {
                             <td>
                                 <form action="order_details.php" method="POST">
                                     <input type="hidden" name="order_id" value="<?php echo $row['order_id']; ?>">
-                                    <input type="submit" name="order_details" class="btn custom-badge" value="Details">
+                                    <input type="submit" name="order_details" class="btn custom-badge m-0" value="Chi tiết">
                                 </form>
                             </td>
                         </tr>

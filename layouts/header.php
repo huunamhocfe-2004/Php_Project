@@ -351,17 +351,17 @@ if (isset($_GET['logout'])) {
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                             <li>
                                 <a class="dropdown-item" href="account.php">
-                                    <i class="fas fa-user-circle"></i> My Account
+                                    <i class="fa-solid fa-user"></i> Tài khoản
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="my_orders.php">
-                                    <i class="fas fa-shopping-bag"></i> Your Orders
+                                    <i class="fa-solid fa-cart-shopping"></i> Đơn hàng
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="account.php?logout=1">
-                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                    <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
                                 </a>
 
 
@@ -394,16 +394,16 @@ if (isset($_GET['logout'])) {
 <div id="cartModal" class="cart-modal">
     <div class="cart-content">
         <span class="close" onclick="toggleCartPopup()">&times;</span>
-        <h2>Your Cart</h2>
+        <h2>Giỏ hàng của bạn</h2>
 
         <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { ?>
             <table>
                 <tr>
-                    <th>Product</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th>Sản phẩm</th>
+                    <th>Kích cỡ</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Tổng</th>
                 </tr>
 
                 <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
@@ -449,14 +449,14 @@ if (isset($_GET['logout'])) {
                     <td><?php echo number_format($_SESSION['total'], 3, '.', '.') . ' VND'; ?></td>
                 </tr>
             </table>
-            <a href="checkout.php" class="btn btn-dark">Proceed to Checkout</a>
-            <a href="cart.php" class="btn btn-dark">Show Full</a>
+            <a href="checkout.php" class="btn btn-dark">Tiến hành thanh toán</a>
+            <a href="cart.php" class="btn btn-dark">Xem tất cả</a>
         <?php } else { ?>
             <div class="empty-cart">
                 <!-- Hình ảnh giỏ hàng trống -->
                 <img src="./assets/images/empty-cart.png" alt="Giỏ hàng trống" style="max-width: 300px; display: block; margin: 0 auto;">
-                <p>Your cart is empty.</p>
-                <a href="index.php" class="btn btn-dark">Continue Shopping</a>
+                <p>Giỏ hàng đang trống.</p>
+                <a href="index.php" class="btn btn-dark">Tiếp tục mua hàng</a>
             </div>
         <?php } ?>
     </div>

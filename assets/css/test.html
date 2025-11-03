@@ -1,0 +1,125 @@
+<!-- HTML: đặt trong thẻ product card của bạn -->
+<div class="product-card">
+  <img src="../images/4cbda5a6-d3cb-0301-df10-0018ac672bc0.jpg" alt="Product image" />
+  <div class="ribbon ribbon--hot" aria-hidden="true">HOT</div>
+  <div class="product-info">
+    <h3>Tên sản phẩm</h3>
+    <p>Giá / mô tả ngắn</p>
+  </div>
+</div>
+
+<!-- CSS: thêm vào <style> hoặc file .css -->
+<style>
+:root{
+  /* dễ chỉnh màu/từ đây */
+  --ribbon-bg: #e53935;       /* nền chính */
+  --ribbon-text: #fff;        /* chữ */
+  --ribbon-shadow: rgba(0,0,0,0.18);
+  --ribbon-padding: .4rem 1rem;
+  --ribbon-fontsize: 0.9rem;
+}
+
+/* --- Container ví dụ --- */
+.product-card{
+  position: relative;
+  width: 300px;               /* chỉnh theo layout của bạn */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ảnh ví dụ */
+.product-card img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* Ribbon (cờ) cơ bản */
+.ribbon{
+  --skew-angle: -20deg;
+  position: absolute;
+  top: 12px;
+  left: 0;               /* đẩy ra ngoài góc để tạo hiệu ứng cờ */
+  z-index: 10;
+  display: inline-block;
+  padding: var(--ribbon-padding);
+  font-weight: 700;
+  font-size: var(--ribbon-fontsize);
+  color: var(--ribbon-text);
+  background: var(--ribbon-bg);
+  text-transform: uppercase;
+  transform: rotate(-12deg) skewX(var(--skew-angle));
+  box-shadow: 0 6px 16px var(--ribbon-shadow);
+  letter-spacing: .06em;
+  white-space: nowrap;
+  pointer-events: none;       /* không chắn click */
+  transform-origin: center;
+  will-change: transform;
+  /* thêm transition mượt khi hover parent */
+  transition: transform .25s cubic-bezier(.2,.9,.2,1), box-shadow .25s ease;
+}
+
+/* Mỏ cờ (tail) */
+.ribbon::after{
+  content: "";
+  position: absolute;
+  right: -12px;               /* tùy chỉnh để khớp với right trên .ribbon */
+  top: 50%;
+  transform: translateY(-50%) rotate(-12deg);
+  width: 20px;
+  height: 20px;
+  background: var(--ribbon-bg);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  box-shadow: inherit;
+  z-index: -1;
+}
+
+/* Waving animation: nhẹ nhàng lắc cờ */
+@keyframes ribbon-wave {
+  0%   { transform: rotate(-12deg) skewX(var(--skew-angle)) translateY(0); }
+  25%  { transform: rotate(-8deg)  skewX(calc(var(--skew-angle) - 2deg)) translateY(-2px); }
+  50%  { transform: rotate(-12deg) skewX(var(--skew-angle)) translateY(0); }
+  75%  { transform: rotate(-16deg) skewX(calc(var(--skew-angle) + 2deg)) translateY(2px); }
+  100% { transform: rotate(-12deg) skewX(var(--skew-angle)) translateY(0); }
+}
+
+/* subtle shimmer (ánh chớp nhẹ trên cờ) */
+.ribbon::before{
+  content: "";
+  position: absolute;
+  left: 8%;
+  top: 10%;
+  width: 60%;
+  height: 40%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06));
+  transform: skewX(var(--skew-angle));
+  filter: blur(.2px);
+  opacity: .9;
+  pointer-events: none;
+}
+
+/* Kích hoạt animation nhẹ nhàng (chạy loop) */
+.ribbon--hot{
+  animation: ribbon-wave 3.6s ease-in-out infinite;
+}
+
+/* Thêm hiệu ứng khi hover vào product (cờ nhảy lên) */
+.product-card:hover .ribbon{
+  transform: translateY(-4px) rotate(-10deg) skewX(var(--skew-angle));
+  box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+}
+
+/* Một vài biến thể màu sẵn dùng */
+.ribbon--sale { --ribbon-bg: #ff9800; }  /* sale - cam */
+.ribbon--new  { --ribbon-bg: #43a047; }  /* new - xanh */
+.ribbon--hot  { --ribbon-bg: #e53935; }  /* hot - đỏ (mặc định) */
+
+/* Responsive: thu nhỏ chữ trên màn nhỏ */
+@media (max-width:420px){
+  .ribbon{ font-size: .78rem; right: -36px; top:8px; }
+  .ribbon::after{ right:-10px; width:16px; height:16px; }
+}
+</style>
