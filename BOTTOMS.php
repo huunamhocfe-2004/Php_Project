@@ -134,11 +134,11 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">BOTTOMS</li>
+                            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Quần</li>
                         </ol>
                     </nav>
-                    <p class="text-uppercase fs-3">Search Product</p>
+                    <p class="text-uppercase fs-3">Tìm sản phẩm</p>
                     <hr class="mx-auto">
                 </div>
                 <form action="BOTTOMS.php" method="POST">
@@ -146,7 +146,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                         <div class="row">
                             <!-- Category Section -->
                             <div class="col-lg-12">
-                                <p class="text-uppercase fw-bold">Category</p>
+                                <p class="text-uppercase fw-bold">Danh mục</p>
 
                                 <div class="form-check">
                                     <input type="radio" value="SHORTS" class="form-check-input" name="category"
@@ -183,7 +183,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
 
                     <div class="form-group m-4">
                         <hr class="mx-auto">
-                        <input type="submit" name="search" value="Search" class="btn btn-primary">
+                        <input type="submit" name="search" value="Tìm kiếm" class="btn btn-primary">
                     </div>
                 </form>
             </section>
@@ -193,7 +193,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
         <div class="col-lg-9 col-md-8 col-sm-12">
             <section id="products" class="my-5 py-5">
             <div class="container text-center mt-5 py-5">
-                    <h3 class="text-uppercase fs-3">BOTTOMS</h3>
+                    <h3 class="text-uppercase fs-3">Quần</h3>
                     <hr class="mx-auto">
                 </div>
                 <div class="row">

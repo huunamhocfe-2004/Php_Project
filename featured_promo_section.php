@@ -19,7 +19,7 @@ $product = $result->fetch_assoc();
 
 // Nếu không có → thông báo
 if (!$product) {
-    echo "<p style='text-align:center; color:#999; padding:50px; font-size:1.1rem;'>Chưa có sản phẩm nào được đánh dấu <strong>Highlight</strong>.</p>";
+    // echo "<p style='text-align:center; color:#999; padding:50px; font-size:1.1rem;'>Chưa có sản phẩm nào được đánh dấu <strong>Highlight</strong>.</p>";
     return;
 }
 ?>
@@ -40,6 +40,7 @@ if (!$product) {
         max-width: 1200px;
         margin: 80px auto;
         padding: 0 20px;
+        height: auto;
     }
 
     .promo-grid {
@@ -59,6 +60,9 @@ if (!$product) {
         position: relative;
         overflow: hidden;
         border-radius: 10px;
+        width: auto;
+        height: 500px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
     .promo-image img {
@@ -97,6 +101,12 @@ if (!$product) {
         color: #2c3e50;
         margin-bottom: 16px;
         line-height: 1.2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* Giới hạn 2 dòng */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .category {
@@ -114,6 +124,12 @@ if (!$product) {
         color: #555;
         margin-bottom: 24px;
         line-height: 1.8;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        /* Giới hạn 2 dòng */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .price-group {

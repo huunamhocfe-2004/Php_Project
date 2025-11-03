@@ -159,27 +159,27 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-1.avif" class="d-block w-100" alt="Slide 1">
+                    <img src="./assets/images/banner.jpg" class="d-block w-100" alt="Slide 1">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-4.jpg" class="d-block w-100" alt="Slide 2">
+                    <img src="./assets/images/banner1.jpg" class="d-block w-100" alt="Slide 2">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-3.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="./assets/images/banner2.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-5.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="./assets/images/banner3.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-6.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="./assets/images/banner4.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
             <div class="carousel-item">
