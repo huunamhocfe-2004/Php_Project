@@ -86,27 +86,27 @@ include('layouts/header.php');
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-1.avif" class="d-block w-100" alt="Slide 1">
+                    <img src="./assets/images/banner.jpg" class="d-block w-100" alt="Slide 1">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-4.jpg" class="d-block w-100" alt="Slide 2">
+                    <img src="./assets/images/banner1.jpg" class="d-block w-100" alt="Slide 2">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-3.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="./assets/images/banner2.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-5.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="./assets/images/banner3.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slider-img">
-                    <img src="./assets/images/banner-6.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="./assets/images/banner4.jpg" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
             <div class="carousel-item">
@@ -136,29 +136,6 @@ include('layouts/header.php');
     </p>
 </div>
 <?php include('featured_promo_section.php'); ?>
-<section class="product-promo">
-    <div class="product-grid">
-      
-      <!-- Hình ảnh -->
-      <div class="product-image">
-        <img src="./assets/images/clothes/productPromo.jpg" alt="Sản phẩm nổi bật">
-        <div class="badge">Hot Sale</div>
-      </div>
-
-      <!-- Nội dung -->
-      <div class="product-content">
-        <h2>Áo Sơ Mi Top Tập Gym Ngoài Trời Quần Áo Dành Cho Nam R428<br><span style="color:#e74c3c; font-size:0.9em;">Giảm 35% – Chỉ hôm nay!</span></h2>
-        <p>Áo thun thể thao ngắn tay nam này được làm từ hỗn hợp polyester và spandex, mang lại khả năng thoáng khí, đặc tính khô nhanh và tính năng chống co rút. </p>
-        
-        <div class="price">
-          <del>6.990.000đ</del>
-          <ins>4.490.000đ</ins>
-        </div>
-
-        <button class="btn-cta">Mua Ngay</button>
-      </div>
-    </div>
-  </section>
 <div class="container  p-5 list_product-container my-5">
     <div class="list_product-txt" style="background-color: #FF4500;">Sản phẩm bán chạy</div>
     <div class="list_product-wrapper px-2 py-2">

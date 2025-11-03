@@ -85,14 +85,14 @@ function calculateTotalCart()
                 <!-- Breadcrumb -->
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
-                <li class="breadcrumb-item"><a href="cart.php">Your Cart</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Check Out</li>
+                <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="cart.php">Giỏ hàng</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
                 </ol>
                 </nav>
        
     </div>
-    <h2 class="text-uppercase text-center">Check out</h2>
+    <h2 class="text-uppercase text-center">Thanh toán</h2>
     <hr class="mx-auto">
     <form action="place_order.php" method="POST"></form>
     <div class="container">
@@ -107,7 +107,7 @@ function calculateTotalCart()
                     <!-- Shipping Address -->
                     <div class="col-md-6">
                         <div class="sub-title">
-                            <h3>Shipping Address</h3>
+                            <h3>Địa chỉ giao</h3>
                         </div>
 
                         <div class="card-body shadow-lg border-0 checkout-form">
@@ -116,17 +116,17 @@ function calculateTotalCart()
                                     <div class="mb-3">
                                         
                                         <!-- <input type="text" class="form-control" id="name" name="name" placeholder="Name"> -->
-                                        <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Name" required>
+                                        <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Tên" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <textarea name="address" id="address" class="form-control" placeholder="Address" required></textarea>
+                                        <textarea name="address" id="address" class="form-control" placeholder="Địa chỉ" required></textarea>
                                     </div>
                                 </div>
                                 
@@ -138,7 +138,7 @@ function calculateTotalCart()
                     <!-- Order Summary -->
                     <div class="col-md-5">
                         <div class="sub-title">
-                            <h3>Order Summery</h3>
+                            <h3>Tóm tắt đơn</h3>
                         </div>
 
                         <div class="cart-summery shadow-lg border-0">
@@ -150,14 +150,14 @@ function calculateTotalCart()
                                 </div>
                             <?php } ?>
                             <div class="d-flex justify-content-between pb-2">
-                                <h6>Shipping</h6>
+                                <h6>Phi giao</h6>
                                 <h6>0 VND</h6>
                             </div>
                             <div class="d-flex justify-content-between summery-end">
-                                <h6>Total</h6>
+                                <h6>Tổng</h6>
                                 <h6><strong><?php echo number_format($_SESSION['total'], 3, '.', '.') . ' VND'; ?></strong></h6>
                             </div>
-                            <button class="btn btn-success" name="place_order">Checkout</button>
+                            <button class="btn btn-success" name="place_order">Thanh toán</button>
                             
                         </div>
                     </div>

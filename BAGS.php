@@ -133,11 +133,11 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">BAGS</li>
+                            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Túi xách</li>
                         </ol>
                     </nav>
-                    <p class="text-uppercase fs-3">Search Product</p>
+                    <p class="text-uppercase fs-3">Tìm sản phẩm</p>
                     <hr class="mx-auto">
                 </div>
                 <form action="BAGS.php" method="POST">
@@ -145,23 +145,23 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                         <div class="row">
                             <!-- Category Section -->
                             <div class="col-lg-12">
-                                <p class="text-uppercase fw-bold">Category</p>
+                                <p class="text-uppercase fw-bold">Danh mục</p>
 
                                 <div class="form-check">
                                     <input type="radio" value="MINI BAGS" class="form-check-input" name="category"
                                         id="category_one">
-                                    <label class="form-check-label" for="category_one">MINI BAGS</label>
+                                    <label class="form-check-label" for="category_one">Túi nhỏ</label>
                                 </div>
                                 <div class="form-check">
                                     <input type="radio" value="BIG BAGS" class="form-check-input" name="category"
                                         id="category_two">
-                                    <label class="form-check-label" for="category_two">BIG BAGS</label>
+                                    <label class="form-check-label" for="category_two">Túi to</label>
                                 </div>
                             </div>
 
                          <!-- Price Section -->
                      <div class="col-lg-12">
-                        <p class="text-uppercase fw-bold">Price Range</p>
+                        <p class="text-uppercase fw-bold">Giá</p>
                         <input type="range" name="price" value="5000" class="form-range w-100" min="1" max="10000000" id="priceRange" oninput="updatePriceLabel(this.value)">
                         <div class="w-100">
                             <span style="float: left;">1</span>
@@ -191,7 +191,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
         <div class="col-lg-9 col-md-8 col-sm-12">
             <section id="products" class="my-5 py-5">
             <div class="container text-center mt-5 py-5">
-                    <h3 class="text-uppercase fs-3">BAGS</h3>
+                    <h3 class="text-uppercase fs-3">Túi</h3>
                     <hr class="mx-auto">
                 </div>
                 <div class="row">
