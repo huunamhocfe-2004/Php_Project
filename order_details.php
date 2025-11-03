@@ -61,12 +61,12 @@ if (isset($_POST['order_details']) && isset($_POST['order_id'])) {
         <table class="orders mt-5">
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Product</th>
-                    <th>Size</th>
-                    <th>Product Price</th>
-                    <th>Qty</th>
-                    <th>Order Date</th>
+                    <th>ID</th>
+                    <th>Sản phẩm</th>
+                    <th>Kích thước</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Ngày đặt</th>
                 </tr>
             </thead>
             <tbody>

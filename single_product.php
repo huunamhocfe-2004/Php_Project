@@ -86,6 +86,125 @@ if (isset($_GET['product_id'])) {
         display: none;
         /* Ẩn nút radio gốc */
     }
+
+    .add-to-cart-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 24px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        color: white;
+        background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        color: #000;
+    }
+
+    .add-to-cart-btn:hover {
+        background: linear-gradient(135deg, #ff8fab, #ff6b9d);
+        box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+    }
+
+    .add-to-cart-btn:active {
+        transform: translateY(-1px);
+    }
+
+    .add-to-cart-btn .icon {
+        font-size: 18px;
+    }
+
+    .add-to-cart-btn .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+    }
+
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+
+    .quantity-input {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        width: fit-content;
+        margin-top: 12px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Nút + / - */
+    .quantity-btn {
+        width: 38px;
+        height: 38px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: 600;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        user-select: none;
+        /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+    }
+
+    .quantity-btn:hover {
+        background: #ff6b9d;
+        color: white;
+        border-color: #ff6b9d;
+        box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+    }
+
+    .quantity-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Ô input số */
+    .quantity-input input {
+        width: 56px;
+        height: 38px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        outline: none;
+        transition: all 0.3s ease;
+        -moz-appearance: textfield;
+        /* Ẩn mũi tên mặc định */
+    }
+
+    /* Ẩn mũi tên lên/xuống mặc định */
+    .quantity-input input::-webkit-outer-spin-button,
+    .quantity-input input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .quantity-input input:focus {
+        border-color: #ff6b9d;
+        box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+    }
 </style>
 
 
@@ -169,10 +288,13 @@ if (isset($_GET['product_id'])) {
                     <?php
                     }
                     ?>
-
-
-                    <input type="number" name="product_quantity" value="1" min="1" class="mt-3">
-                    <button class="buy-btn rounded-2 text-uppercase" type="submit" name="add_to_cart">Add To Cart</button>
+                    <div class="quantity-input my-3">
+                        <div class="quantity-btn mx-2" onclick="changeQuantity(-1)">-</div>
+                        <input type="number" name="product_quantity" value="1" min="1" id="quantity" readonly>
+                        <div class="quantity-btn mx-2" onclick="changeQuantity(1)">+</div>
+                    </div>
+                    <!-- <input type="number" name="product_quantity" value="1" min="1" class="mt-3"> -->
+                    <button class="add-to-cart-btn" type="submit" name="add_to_cart"> <i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ hàng</button>
                 </form>
                 <h3 class="py-5 text-uppercase">Mô tả</h3>
                 <p><?php echo $row['product_description']; ?></p>
@@ -281,23 +403,30 @@ if (isset($_GET['product_id'])) {
         </div>
     </div>
 </div>
-    </section>
+</section>
 
 
 
 
 
 
-    <?php include('layouts/footer.php') ?>
+<?php include('layouts/footer.php') ?>
 
 
-    <script>
-        var mainImg = document.getElementById('mainImg');
-        var small_Img = document.getElementsByClassName('small-img');
+<script>
+    var mainImg = document.getElementById('mainImg');
+    var small_Img = document.getElementsByClassName('small-img');
 
-        for (let i = 0; i <= 4; i++) {
-            small_Img[i].addEventListener('click', function() {
-                mainImg.src = small_Img[i].src;
-            });
+    for (let i = 0; i <= 4; i++) {
+        small_Img[i].addEventListener('click', function() {
+            mainImg.src = small_Img[i].src;
+        });
+    }
+    function changeQuantity(change) {
+            const input = document.getElementById('quantity');
+            let value = parseInt(input.value);
+            value = value + change;
+            if (value < 1) value = 1;
+            input.value = value;
         }
-    </script>
+</script>

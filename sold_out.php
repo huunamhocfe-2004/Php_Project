@@ -56,36 +56,97 @@ if (isset($_GET['product_id'])) {
     }
 
     .sold-out-btn {
-        background-color: white;
-        /* Nền nút màu trắng */
-        color: black;
-        /* Chữ màu đen */
-        border: 2px solid black;
-        /* Viền đen */
-        padding: 10px 20px;
-        /* Khoảng cách nội dung bên trong nút */
-        font-size: 1rem;
-        /* Cỡ chữ */
-        font-weight: bold;
-        /* Chữ đậm */
-        text-transform: uppercase;
-        /* In hoa chữ */
-        font-style: italic;
-        /* Chữ nghiêng */
-        border-radius: 4px;
-        /* Bo góc của nút */
-        cursor: not-allowed;
-        /* Thay đổi con trỏ khi rê chuột qua */
-        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: default;
+            color: #999;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Icon nhỏ */
+        .sold-out-btn .icon {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+        .quantity-input {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        width: fit-content;
+        margin-top: 12px;
+        font-family: 'Poppins', sans-serif;
     }
 
-    .sold-out-btn:hover {
-        background-color: black;
-        /* Nền đen khi hover */
+    /* Nút + / - */
+    .quantity-btn {
+        width: 38px;
+        height: 38px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: 600;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        user-select: none;
+        /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+    }
+
+    .quantity-btn:hover {
+        background: #ff6b9d;
         color: white;
-        /* Chữ trắng khi hover */
-        border-color: black;
-        /* Viền đen khi hover */
+        border-color: #ff6b9d;
+        box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+    }
+
+    .quantity-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Ô input số */
+    .quantity-input input {
+        width: 56px;
+        height: 38px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        outline: none;
+        transition: all 0.3s ease;
+        -moz-appearance: textfield;
+        /* Ẩn mũi tên mặc định */
+    }
+
+    /* Ẩn mũi tên lên/xuống mặc định */
+    .quantity-input input::-webkit-outer-spin-button,
+    .quantity-input input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .quantity-input input:focus {
+        border-color: #ff6b9d;
+        box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
     }
 </style>
 
@@ -136,7 +197,7 @@ if (isset($_GET['product_id'])) {
                     <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>">
                     <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
-                    <label>Select Size:</label>
+                    <label>Kích cỡ:</label>
                     <div class="size-options">
                         <input type="radio" name="product_size" id="size_S" value="S" required>
                         <label for="size_S" class="size-label">S</label>
@@ -147,12 +208,16 @@ if (isset($_GET['product_id'])) {
                         <input type="radio" name="product_size" id="size_XL" value="XL">
                         <label for="size_XL" class="size-label">XL</label>
                     </div>
-
-                    <input type="number" name="product_quantity" value="1" min="1" class="mt-3">
-                    <button class="sold-out-btn" type="button">Sold Out</button>
+                    <div class="quantity-input my-3">
+                        <div class="quantity-btn mx-2" onclick="changeQuantity(-1)">-</div>
+                        <input type="number" name="product_quantity" value="1" min="1" id="quantity" readonly>
+                        <div class="quantity-btn mx-2" onclick="changeQuantity(1)">+</div>
+                    </div>
+                    <!-- <input type="number" name="product_quantity" value="1" min="1" class="mt-3"> -->
+                    <button class="sold-out-btn" type="button"> <i class="fa-solid fa-lock icon"></i>Hết hàng</button>
 
                 </form>
-                <h3 class="py-5 text-uppercase">Product Details</h3>
+                <h3 class="py-5 text-uppercase">Mô tả</h3>
                 <p><?php echo $row['product_description']; ?></p>
             </div>
 
@@ -264,4 +329,11 @@ if (isset($_GET['product_id'])) {
             mainImg.src = small_Img[i].src;
         });
     }
+    function changeQuantity(change) {
+            const input = document.getElementById('quantity');
+            let value = parseInt(input.value);
+            value = value + change;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
 </script>

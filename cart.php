@@ -100,17 +100,17 @@ function calculateTotalCart()
                 <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
                 </ol>
                 </nav>
-        <h2 class="font-weight-bold">Your Cart</h2>
+        <h2 class="font-weight-bold">Giỏ hàng của bạn</h2>
     </div>
 
     <table class="mt-3 pt-5">
         <tr>
-            <th>Product</th>
-            <th>Size</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Action</th>
-            <th>Total</th>
+            <th>Sản phẩm</th>
+            <th>Kích thước</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Tùy chọn</th>
+            <th>Tổng</th>
         </tr>
 
         <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { ?>
@@ -153,38 +153,38 @@ function calculateTotalCart()
                      
                             <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>"
                                 min="1">
-                                <button type="submit" name="update_quantity" class="remove-btn rounded-2">Update</button>
+                                <button type="submit" name="update_quantity" class="remove-btn rounded-2">Cập nhật</button>
                         </form>
                     </td>
 
                     <td>
-                    <p><?php echo $value['product_price']; ?></p>
+                    <p class="m-0"><?php echo $value['product_price']; ?></p>
 
                     </td>
                     <td>
                         <form action="cart.php" method="POST">
                             <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
-                            <button type="submit" name="remove_product" class="remove-btn rounded-2">Remove</button>
+                            <button type="submit" name="remove_product" class="remove-btn rounded-2"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </td>
                     <td>
-                    <p><?php echo number_format($_SESSION['total'], 3, '.', '.') . ' VND'; ?> 
+                    <p class="m-0"><?php echo number_format($_SESSION['total'], 3, '.', '.') . ' VND'; ?> 
                         </p>
                     </td>
                 </tr>
             <?php } ?>
         <?php } else { ?>
             <tr>
-                <td colspan="5" class="text-center fs-2 text-uppercase p-4">Your cart is empty</td>
+                <td colspan="5" class="text-center fs-2 text-uppercase p-4">Giỏ hàng trống</td>
             </tr>
         <?php } ?>
     </table>
 
     <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { ?>
         <div class="cart-total">
-            <table>
+            <table class="m-0">
                 <tr>
-                    <td>Total</td>
+                    <td>Tổng</td>
                     <td><?php echo number_format($_SESSION['total'], 3, '.', '.') . ' VND'; ?></td>
                 </tr>
             </table>
@@ -192,8 +192,7 @@ function calculateTotalCart()
 
         <div class="checkout-container">
             <form action="checkout.php" method="POST">
-                <button class="checkout-btn rounded-2 text-uppercase text-white" name="check-out">Process to
-                    Checkout</button>
+                <button class="checkout-btn rounded-2 text-uppercase text-white" name="check-out">Tiến hành thanh toán</button>
             </form>
         </div>
     <?php } ?>

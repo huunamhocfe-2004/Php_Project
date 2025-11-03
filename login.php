@@ -52,7 +52,7 @@ if (isset($_POST['login'])) {
             <?php endif; ?>
             <?php if (isset($_GET['error'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <p class="m-0">
+                    <p class="m-0 w-100">
                         <?php echo $_GET['error']; ?>
                     </p>
                 </div>

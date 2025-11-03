@@ -47,24 +47,24 @@ if (isset($_SESSION['logged_in'])) {
                 <li class="breadcrumb-item active" aria-current="page">My Orders</li>
             </ol>
         </nav>
-        
-  
+
+
         <!-- Thanh Menu -->
         <div class="d-flex justify-content-center mb-5">
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a href="account.php" class="nav-link font-weight-bold">
-                        <i class="fa-solid fa-user mx-2"></i> Tài khoản
+                        <i class="fa-solid fa-user mx-2"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="my_orders.php" class="nav-link font-weight-bold active">
-                        <i class="fa-solid fa-cart-shopping mx-2"></i> Đơn hàng
+                        <i class="fa-solid fa-cart-shopping mx-2"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="account.php?logout=1" class="nav-link font-weight-bold">
-                                                    <i class="fa-solid fa-right-from-bracket mx-2"></i> Đăng xuất
+                        <i class="fa-solid fa-right-from-bracket mx-2"></i>
 
                     </a>
                 </li>
@@ -94,15 +94,15 @@ if (isset($_SESSION['logged_in'])) {
                             <td><?php echo $row['product_quantity']; ?></td>
                             <td>
                                 <?php
-                                    $status = $row['order_status'];
-                                    $statusClass = 'bg-danger'; // Mặc định là màu đỏ cho "pending"
-                                    if ($status === 'shipped') {
-                                        $statusClass = 'bg-warning'; // Màu cam cho "shipped"
-                                    } elseif ($status === 'delivered') {
-                                        $statusClass = 'bg-success'; // Màu xanh cho "delivered"
-                                    } elseif ($status === 'cancelled') {
-                                        $statusClass = 'bg-primary'; // Màu xanh dương cho "cancelled"
-                                    }
+                                $status = $row['order_status'];
+                                $statusClass = 'bg-danger'; // Mặc định là màu đỏ cho "pending"
+                                if ($status === 'shipped') {
+                                    $statusClass = 'bg-warning'; // Màu cam cho "shipped"
+                                } elseif ($status === 'delivered') {
+                                    $statusClass = 'bg-success'; // Màu xanh cho "delivered"
+                                } elseif ($status === 'cancelled') {
+                                    $statusClass = 'bg-primary'; // Màu xanh dương cho "cancelled"
+                                }
                                 ?>
                                 <span class="badge <?php echo $statusClass; ?> p-2 text-uppercase">
                                     <?php echo htmlspecialchars($status); ?>
@@ -124,6 +124,3 @@ if (isset($_SESSION['logged_in'])) {
 </section>
 
 <?php include('layouts/footer.php') ?>
-
-
-

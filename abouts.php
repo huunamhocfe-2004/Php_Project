@@ -7,14 +7,14 @@ include('layouts/header.php');
 <!-- About Us Section -->
 <section id="about-us" class="my-5 py-5">
     <div class="container">
-        <h2 class="text-uppercase display-4 text-center">ABOUTS US</h2>
+        <h2 class="text-uppercase display-4 text-center">Về chúng tôi</h2>
         <hr class="mx-auto" style="width: 50px; height: 3px; background-color: #007bff;">
         <div class="row mt-4">
             <div class="col-md-6">
-                <p class="lead">Chúng tôi là một thương hiệu thời trang đẳng cấp, cam kết mang đến cho bạn những sản phẩm thời trang không chỉ đẹp mà còn chất lượng vượt trội. Chúng tôi hiểu rằng mỗi khách hàng đều mong muốn tìm thấy phong cách riêng, và chúng tôi luôn nỗ lực mang đến cho bạn sự lựa chọn hoàn hảo.</p>
+                <p class="lead py-1 px-3" style="border-left: 7px solid aqua">Chúng tôi là một thương hiệu thời trang đẳng cấp, cam kết mang đến cho bạn những sản phẩm thời trang không chỉ đẹp mà còn chất lượng vượt trội. Chúng tôi hiểu rằng mỗi khách hàng đều mong muốn tìm thấy phong cách riêng, và chúng tôi luôn nỗ lực mang đến cho bạn sự lựa chọn hoàn hảo.</p>
             </div>
             <div class="col-md-6">
-                <p>Với những thiết kế sáng tạo và nguyên liệu cao cấp, mỗi sản phẩm của chúng tôi được tạo ra để mang lại sự thoải mái, tự tin và khác biệt cho bạn trong mọi khoảnh khắc.</p>
+                <p class="lead py-1 px-3" style="border-left: 7px solid aqua">Với những thiết kế sáng tạo và nguyên liệu cao cấp, mỗi sản phẩm của chúng tôi được tạo ra để mang lại sự thoải mái, tự tin và khác biệt cho bạn trong mọi khoảnh khắc.</p>
             </div>
         </div>
     </div>

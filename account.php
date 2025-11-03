@@ -87,26 +87,27 @@ if (isset($_POST['update_account'])) {
                     </ol>
                 </nav>
 
-                <h3 class="font-weight-bold text-center text-uppercase">Toài khoản của tôi</h3>
 
                 <!-- Account Menu -->
                 <ul id="account-panel" class="nav nav-pills justify-content-center mb-4">
                     <li class="nav-item">
-                        <a href="my_profile.php" class="nav-link font-weight-bold" role="tab">
-                            <i class="fa-solid fa-user mx-2"></i> Tài khoản
+                        <a href="my_profile.php" class="nav-link font-weight-bold active" role="tab">
+                            <i class="fa-solid fa-user"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="my_orders.php" class="nav-link font-weight-bold" role="tab">
-                            <i class="fa-solid fa-cart-shopping mx-2"></i> Đơn hàng
+                            <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="account.php?logout=1" class="nav-link font-weight-bold" role="tab">
-                            <i class="fa-solid fa-right-from-bracket mx-2"></i> Đăng xuất
+                            <i class="fa-solid fa-right-from-bracket"></i>
                         </a>
                     </li>
                 </ul>
+                <h3 class="font-weight-bold text-center text-uppercase">Toài khoản của tôi</h3>
+
 
                 <!-- Account Update Form -->
                 <div class="account-update-form">

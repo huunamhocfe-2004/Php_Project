@@ -1,14 +1,86 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
-
 session_start();  // Start session at the very top
-
 include('layouts/header.php');
-
-
-
 ?>
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 20px 0;
+        font-family: 'Poppins', 'Segoe UI', sans-serif;
+        font-weight: 500;
+    }
 
+    .pagination .page-item {
+        list-style: none;
+    }
+
+    .pagination .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #555;
+        font-size: 15px;
+        font-weight: 600;
+        background: #fff;
+        border: 2px solid #eee;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    /* Hover & Active */
+    .pagination .page-link:hover {
+        background: #ff6b9d;
+        color: white;
+        border-color: #ff6b9d;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 107, 157, 0.3);
+    }
+
+    .pagination .page-item.active .page-link {
+        background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+        color: white;
+        border-color: #ff6b9d;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(255, 107, 157, 0.4);
+    }
+
+    /* Nút Previous & Next */
+    .pagination .page-link.prev-next {
+        width: auto;
+        padding: 0 16px;
+        border-radius: 30px;
+        font-weight: 600;
+        color: #888;
+        border-color: #ddd;
+    }
+
+    .pagination .page-link.prev-next:hover {
+        background: #f8f9fa;
+        color: #ff6b9d;
+        border-color: #ff6b9d;
+    }
+
+    /* Responsive */
+    @media (max-width: 576px) {
+        .pagination .page-link {
+            width: 38px;
+            height: 38px;
+            font-size: 14px;
+        }
+        .pagination .page-link.prev-next {
+            padding: 0 12px;
+            font-size: 13px;
+        }
+    }
+</style>
 <div id="banner_slider" class="banner_slider mb-2">
     <div id="homeSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
@@ -63,7 +135,30 @@ include('layouts/header.php');
         “Phong cách sinh ra từ bạn.”</p>
     </p>
 </div>
+<?php include('featured_promo_section.php'); ?>
+<section class="product-promo">
+    <div class="product-grid">
+      
+      <!-- Hình ảnh -->
+      <div class="product-image">
+        <img src="./assets/images/clothes/productPromo.jpg" alt="Sản phẩm nổi bật">
+        <div class="badge">Hot Sale</div>
+      </div>
 
+      <!-- Nội dung -->
+      <div class="product-content">
+        <h2>Áo Sơ Mi Top Tập Gym Ngoài Trời Quần Áo Dành Cho Nam R428<br><span style="color:#e74c3c; font-size:0.9em;">Giảm 35% – Chỉ hôm nay!</span></h2>
+        <p>Áo thun thể thao ngắn tay nam này được làm từ hỗn hợp polyester và spandex, mang lại khả năng thoáng khí, đặc tính khô nhanh và tính năng chống co rút. </p>
+        
+        <div class="price">
+          <del>6.990.000đ</del>
+          <ins>4.490.000đ</ins>
+        </div>
+
+        <button class="btn-cta">Mua Ngay</button>
+      </div>
+    </div>
+  </section>
 <div class="container  p-5 list_product-container my-5">
     <div class="list_product-txt" style="background-color: #FF4500;">Sản phẩm bán chạy</div>
     <div class="list_product-wrapper px-2 py-2">
@@ -296,26 +391,32 @@ $products = $stmt->get_result();
 
 
     <!-- Pagination Section -->
+     
     <nav aria-label="Page navigation example">
-        <ul class="container text-center pagination mt-5">
-            <?php if ($page > 1) : ?>
-                <li class="page-item"><a href="index.php?page=<?php echo $page - 1; ?>"
-                        class="page-link">
-                        << </a>
-                </li>
-            <?php endif; ?>
-            <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>"><a
-                        href="all_product.php?page=<?php echo $i; ?>" class="page-link"><?php echo $i; ?></a></li>
-            <?php endfor; ?>
-            <?php if ($page < $total_pages) : ?>
-                <li class="page-item"><a href="all_product.php?page=<?php echo $page + 1; ?>"
-                        class="page-link"> >> </a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
+    <ul class="container text-center pagination mt-5">
+        <?php if ($page > 1) : ?>
+            <li class="page-item">
+                <a href="all_product.php?page=<?php echo $page - 1; ?>" class="page-link prev-next">
+                    < </a>
+            </li>
+        <?php endif; ?>
 
-</div>
+        <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+            <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
+                <a href="all_product.php?page=<?php echo $i; ?>" class="page-link"><?php echo $i; ?></a>
+            </li>
+        <?php endfor; ?>
+
+        <?php if ($page < $total_pages) : ?>
+            <li class="page-item">
+                <a href="all_product.php?page=<?php echo $page + 1; ?>" class="page-link prev-next">
+                     > </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
+    
+
 </div>
 
 
