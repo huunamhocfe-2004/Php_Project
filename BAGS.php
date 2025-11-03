@@ -161,7 +161,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
 
                          <!-- Price Section -->
                      <div class="col-lg-12">
-                        <p class="text-uppercase fw-bold">Giá</p>
+                        <p class="text-uppercase fw-bold">Phạm vi giá</p>
                         <input type="range" name="price" value="5000" class="form-range w-100" min="1" max="10000000" id="priceRange" oninput="updatePriceLabel(this.value)">
                         <div class="w-100">
                             <span style="float: left;">1</span>
@@ -181,7 +181,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
 
                     <div class="form-group m-4">
                         <hr class="mx-auto">
-                        <input type="submit" name="search" value="Search" class="btn btn-primary">
+                        <input type="submit" name="search" value="Tìm kiếm" class="btn btn-primary">
                     </div>
                 </form>
             </section>

@@ -68,11 +68,27 @@
         })
 
     });
+function formatVND(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function updatePriceLabel(value) {
+        const priceEl = document.getElementById("selectedPrice");
+        priceEl.textContent = formatVND(value);
+    }
+
+    // Khởi tạo giá khi load trang
+    document.addEventListener("DOMContentLoaded", function() {
+        const rangeEl = document.getElementById("priceRange");
+        updatePriceLabel(rangeEl.value);
+    });
+    
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+
 </body>
 
 

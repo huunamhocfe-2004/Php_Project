@@ -163,14 +163,14 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                             
                      <!-- Price Section -->
                      <div class="col-lg-12">
-                        <p class="text-uppercase fw-bold">Price Range</p>
+                        <p class="text-uppercase fw-bold">Phạm vi giá</p>
                         <input type="range" name="price" value="5000" class="form-range w-100" min="1" max="10000000" id="priceRange" oninput="updatePriceLabel(this.value)">
                         <div class="w-100">
                             <span style="float: left;">1</span>
-                            <span style="float: right;">10.000.000 VND</span>
+                            <span style="float: right;">10tr</span>
                         </div>
                         <!-- Display the selected price -->
-                        <p class="m-4 pt-4 text-uppercase fw-bold">Price: <span id="selectedPrice">5000</span> VND</p>
+                        <p class="m-4 pt-4 text-uppercase fw-bold">Giá: <span id="selectedPrice">5000</span>đ</p>
 
                         <!-- Hidden input fields to store the min and max price (for backend usage) -->
                         <input type="hidden" name="min_price" id="minPrice" value="1">

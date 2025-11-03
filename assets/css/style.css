@@ -440,23 +440,6 @@ hr.mx-auto {
     color: #333;
     text-align: center;
 }
-
-/* Breadcrumb */
-.breadcrumb {
-    background-color: transparent;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-.breadcrumb-item a {
-    color: #e91e63;
-    text-decoration: none;
-}
-
-.breadcrumb-item.active {
-    color: #333;
-}
-
 /* Table Styles */
 table {
     width: 100%;

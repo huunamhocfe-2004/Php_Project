@@ -138,13 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- Search Section (Filter) -->
         <div class="col-lg-3 col-md-4 col-sm-12">
-            < id="search" class="my-5 py-5 ms-2">
+            <section id="search" class="my-5 py-5 ms-2">
                 <div class="container mt-5 py-5">
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
-                            <li class="breadcrumb-item"><a href="TOPS.php">TOPS</a></li>
+                            <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="TOPS.php">Áo</a></li>
                             <li class="breadcrumb-item active" aria-current="page">OUTERWEARS</li>
                         </ol>
                     </nav>
@@ -187,16 +187,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <!-- Price Section -->
                             <div class="col-lg-12">
-                                <p class="text-uppercase fw-bold">Giá</p>
+                                <p class="text-uppercase fw-bold">Phạm vi giá</p>
                                 <input type="range" name="price" value="5000" class="form-range w-100" min="1"
                                     max="1000000" id="priceRange" oninput="updatePriceLabel(this.value)">
                                 <div class="w-100">
                                     <span style="float: left;">1</span>
-                                    <span style="float: right;">1.000.000 VND</span>
+                                    <span style="float: right;">1tr</span>
                                 </div>
                                 <!-- Display the selected price -->
                                 <p class="m-4 pt-4 text-uppercase fw-bold">Giá: <span id="selectedPrice">5000</span>
-                                    VND</p>
+                                    đ</p>
 
                                 <!-- Hidden input fields to store the min and max price (for backend usage) -->
                                 <input type="hidden" name="min_price" id="minPrice" value="1">
@@ -207,11 +207,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="form-group m-4">
                         <hr class="mx-auto">
-                        <input type="submit" name="search" value="Tìm" class="btn btn-primary">
+                        <input type="submit" name="search" value="Tìm kiếm" class="btn btn-primary">
                     </div>
                 </form>
 
-                </section>
+            </section>
         </div>
 
         <!-- Products Section -->

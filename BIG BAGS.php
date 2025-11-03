@@ -151,28 +151,28 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                                 <div class="form-check">
                                     <input type="radio" value="MINI BAGS" class="form-check-input" name="category"
                                         id="category_one">
-                                    <label class="form-check-label" for="category_one">Túi nhỏ</label>
+                                    <label class="form-check-label" for="category_one">Mini Bags</label>
                                 </div>
                                 <div class="form-check">
                                     <input type="radio" value="BIG BAGS" class="form-check-input" name="category"
                                         id="category_two">
-                                    <label class="form-check-label" for="category_two">Túi lớn</label>
+                                    <label class="form-check-label" for="category_two">Big Bags</label>
                                 </div>
                             </div>
 
 
                             <!-- Price Section -->
                             <div class="col-lg-12">
-                                <p class="text-uppercase fw-bold">Price Range</p>
+                                <p class="text-uppercase fw-bold">Phạm vi giá</p>
                                 <input type="range" name="price" value="5000" class="form-range w-100" min="1"
                                     max="1000000" id="priceRange" oninput="updatePriceLabel(this.value)">
                                 <div class="w-100">
                                     <span style="float: left;">1</span>
-                                    <span style="float: right;">1.000.000 VND</span>
+                                    <span style="float: right;">1tr</span>
                                 </div>
                                 <!-- Display the selected price -->
                                 <p class="m-4 pt-4 text-uppercase fw-bold">Giá: <span id="selectedPrice">5000</span>
-                                    VND</p>
+                                    đ</p>
 
                                 <!-- Hidden input fields to store the min and max price (for backend usage) -->
                                 <input type="hidden" name="min_price" id="minPrice" value="1">
@@ -193,7 +193,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
         <div class="col-lg-9 col-md-8 col-sm-12">
             <section id="products" class="my-5 py-5">
             <div class="container text-center mt-5 py-5">
-                    <h3 class="text-uppercase fs-3">Túi lớn</h3>
+                    <h3 class="text-uppercase fs-3">Big bags</h3>
                     <hr class="mx-auto">
                 </div>
                 <div class="row">

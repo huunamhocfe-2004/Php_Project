@@ -141,12 +141,12 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                         <!-- Breadcrumb -->
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php">HOME</a></li>
-                <li class="breadcrumb-item"><a href="TOPS.php">TOPS</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="TOPS.php">Áo</a></li>
                 <li class="breadcrumb-item active" aria-current="page">SWEATERS & CARDIGANS</li>
                 </ol>
                 </nav>
-                    <p class="text-uppercase fs-3">Search Product</p>
+                    <p class="text-uppercase fs-3">Tìm sản phẩm</p>
                     <hr class="mx-auto">
                 </div>
                 <form action="SWEATERS & CARDIGANS.php" method="POST">
@@ -154,7 +154,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
                         <div class="row">
                             <!-- Category Section -->
                             <div class="col-lg-12">
-                                <p class="text-uppercase fw-bold">Category</p>
+                                <p class="text-uppercase fw-bold">Danh mục</p>
 
                                 <div class="form-check">
                                     <input type="radio" value="T-SHIRTS" class="form-check-input" name="category"
@@ -185,16 +185,16 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
 
                             <!-- Price Section -->
                             <div class="col-lg-12">
-                                <p class="text-uppercase fw-bold">Price Range</p>
+                                <p class="text-uppercase fw-bold">Phạm vi giá</p>
                                 <input type="range" name="price" value="5000" class="form-range w-100" min="1"
                                     max="1000000" id="priceRange" oninput="updatePriceLabel(this.value)">
                                 <div class="w-100">
                                     <span style="float: left;">1</span>
-                                    <span style="float: right;">1.000.000 VND</span>
+                                    <span style="float: right;">1tr</span>
                                 </div>
                                 <!-- Display the selected price -->
-                                <p class="m-4 pt-4 text-uppercase fw-bold">Price: <span id="selectedPrice">5000</span>
-                                    VND</p>
+                                <p class="m-4 pt-4 text-uppercase fw-bold">Giá: <span id="selectedPrice">5000</span>
+                                    đ</p>
 
                                 <!-- Hidden input fields to store the min and max price (for backend usage) -->
                                 <input type="hidden" name="min_price" id="minPrice" value="1">
@@ -205,7 +205,7 @@ $total_pages = ceil($total_products / $products_per_page); // Tổng số trang 
 
                     <div class="form-group m-4">
                         <hr class="mx-auto">
-                        <input type="submit" name="search" value="Search" class="btn btn-primary">
+                        <input type="submit" name="search" value="Tìm kiếm" class="btn btn-primary">
                     </div>
                 </form>
             </section>
