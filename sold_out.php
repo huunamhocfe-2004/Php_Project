@@ -14,7 +14,7 @@ if (isset($_GET['product_id'])) {
     $sg_product = $stmt->get_result();
 
 
-    
+
     $stmt1 = $conn->prepare("SELECT * FROM products  LIMIT 4 OFFSET 8");
     $stmt1->execute();
     $related_products = $stmt1->get_result();
@@ -26,54 +26,67 @@ if (isset($_GET['product_id'])) {
 
 <!-- css for size -->
 <style>
-.size-options {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
+    .size-options {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
 
-.size-label {
-    padding: 10px 20px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border 0.3s ease;
-}
+    .size-label {
+        padding: 10px 20px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border 0.3s ease;
+    }
 
-.size-label:hover {
-    background-color: #f0f0f0;
-}
+    .size-label:hover {
+        background-color: #f0f0f0;
+    }
 
-input[type="radio"]:checked + .size-label {
-    background-color: #000;
-    color: #fff;
-    border-color: #fff;
-}
+    input[type="radio"]:checked+.size-label {
+        background-color: #000;
+        color: #fff;
+        border-color: #fff;
+    }
 
-input[type="radio"] {
-    display: none; /* Ẩn nút radio gốc */
-}
-.sold-out-btn {
-    background-color: white;  /* Nền nút màu trắng */
-    color: black;  /* Chữ màu đen */
-    border: 2px solid black;  /* Viền đen */
-    padding: 10px 20px;  /* Khoảng cách nội dung bên trong nút */
-    font-size: 1rem;  /* Cỡ chữ */
-    font-weight: bold;  /* Chữ đậm */
-    text-transform: uppercase;  /* In hoa chữ */
-    font-style: italic;  /* Chữ nghiêng */
-    border-radius: 4px;  /* Bo góc của nút */
-    cursor: not-allowed;  /* Thay đổi con trỏ khi rê chuột qua */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
+    input[type="radio"] {
+        display: none;
+        /* Ẩn nút radio gốc */
+    }
 
-.sold-out-btn:hover {
-    background-color: black;  /* Nền đen khi hover */
-    color: white;  /* Chữ trắng khi hover */
-    border-color: black;  /* Viền đen khi hover */
-}
+    .sold-out-btn {
+        background-color: white;
+        /* Nền nút màu trắng */
+        color: black;
+        /* Chữ màu đen */
+        border: 2px solid black;
+        /* Viền đen */
+        padding: 10px 20px;
+        /* Khoảng cách nội dung bên trong nút */
+        font-size: 1rem;
+        /* Cỡ chữ */
+        font-weight: bold;
+        /* Chữ đậm */
+        text-transform: uppercase;
+        /* In hoa chữ */
+        font-style: italic;
+        /* Chữ nghiêng */
+        border-radius: 4px;
+        /* Bo góc của nút */
+        cursor: not-allowed;
+        /* Thay đổi con trỏ khi rê chuột qua */
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
 
-
+    .sold-out-btn:hover {
+        background-color: black;
+        /* Nền đen khi hover */
+        color: white;
+        /* Chữ trắng khi hover */
+        border-color: black;
+        /* Viền đen khi hover */
+    }
 </style>
 
 
@@ -109,15 +122,15 @@ input[type="radio"] {
                 <h2 class="py-4"><?php echo $row['product_name']; ?></h2>
                 <h4><?php echo $row['product_price']; ?> VND</h4>
                 <h3 class="p-price-discount">
-                        <?php 
-                        if ($row['product_price_discount'] != 0) {
-                            // Định dạng giá với dấu chấm cách 3 chữ số và thêm "VND"
-                            echo number_format($row['product_price_discount'], 0, '.', '.') . ' VND';
-                        } else {
-                            echo ''; // Hiển thị khoảng trống nếu giá giảm bằng 0
-                        }
-                        ?>
-                    </h3>
+                    <?php
+                    if ($row['product_price_discount'] != 0) {
+                        // Định dạng giá với dấu chấm cách 3 chữ số và thêm "VND"
+                        echo number_format($row['product_price_discount'], 0, '.', '.') . ' VND';
+                    } else {
+                        echo ''; // Hiển thị khoảng trống nếu giá giảm bằng 0
+                    }
+                    ?>
+                </h3>
                 <form action="#" method="POST">
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
                     <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
@@ -148,23 +161,20 @@ input[type="radio"] {
     </div>
 <?php } ?>
 </section>
-<section id="featured" class="my-5 py-5">
-    <div class="container text-center mt-5 py-5">
-        <h3 class="text-uppercase fs-1">Related Products</h3>
-    </div>
+<div class="container p-5 list_product-container">
+    <div class="list_product-txt">Sản phẩm liên quan</div>
+    <div class="list_product-wrapper px-2 py-2">
+        <div class="row gap-2 justify-content-between">
+            <?php
+            // Kết nối tới cơ sở dữ liệu
+            include('server/connection.php');
 
-    <div class="row mx-auto container-fluid">
-        
-        <?php 
-        // Kết nối tới cơ sở dữ liệu
-        include('server/connection.php');
-        
-        // Giả sử bạn đã có product_id từ trang single_product.php
-        if (isset($_GET['product_id'])) {
-            $product_id = $_GET['product_id'];
-            
-            // Truy vấn lấy thông tin sản phẩm hiện tại
-            $stmt = $conn->prepare("
+            // Giả sử bạn đã có product_id từ trang single_product.php
+            if (isset($_GET['product_id'])) {
+                $product_id = $_GET['product_id'];
+
+                // Truy vấn lấy thông tin sản phẩm hiện tại
+                $stmt = $conn->prepare("
                 SELECT p.*, sp.status_products_name
                 FROM products p
                 LEFT JOIN status_products sp ON p.status_products_id = sp.status_products_id
@@ -172,71 +182,73 @@ input[type="radio"] {
                 ORDER BY RAND() 
                 LIMIT 4
             ");
-            $stmt->bind_param('i', $product_id); // Loại trừ sản phẩm hiện tại
-            $stmt->execute();
-            $related_products = $stmt->get_result();
-        } else {
-            echo "No related products available.";
-        }
-
-        // Lặp qua các sản phẩm liên quan và hiển thị
-        while ($related_product = $related_products->fetch_assoc()) { 
-            // Kiểm tra trạng thái sản phẩm
-            if ($related_product['status_products_name'] == 'Sold Out') {
-                // Nếu sản phẩm đã "Sold Out", chuyển hướng đến trang sold_out.php
-                $link = "sold_out.php?product_id=" . $related_product['product_id'];
-            } elseif ($related_product['status_products_name'] == 'Pre Order') {
-                // Nếu sản phẩm là "Pre Order", chuyển hướng đến trang pre_order.php
-                $link = "pre_order.php?product_id=" . $related_product['product_id'];
+                $stmt->bind_param('i', $product_id); // Loại trừ sản phẩm hiện tại
+                $stmt->execute();
+                $related_products = $stmt->get_result();
             } else {
-                // Nếu sản phẩm còn hàng, chuyển hướng đến trang single_product.php
-                $link = "single_product.php?product_id=" . $related_product['product_id'];
+                echo "No related products available.";
             }
-        ?>
-        
-        <div class="product text-center col-lg-3 col-md-6 col-sm-12">
-            <a href="<?php echo $link; ?>" class="product-link">
 
-                <!-- Hiển thị trạng thái sản phẩm -->
-                <div class="product-status <?php echo strtolower(str_replace(' ', '-', $related_product['status_products_name'])); ?>">
-                    <?php echo $related_product['status_products_name']; ?>
-                </div>
-                
-                <div class="img-container">
-                    <!-- Ảnh sản phẩm chính -->
-                    <img class="img-fluid mb-3" src="./assets/images/<?php echo $related_product['product_image']; ?>">
+            // Lặp qua các sản phẩm liên quan và hiển thị
+            while ($related_product = $related_products->fetch_assoc()) {
+                // Kiểm tra trạng thái sản phẩm
+                if ($related_product['status_products_name'] == 'Sold Out') {
+                    // Nếu sản phẩm đã "Sold Out", chuyển hướng đến trang sold_out.php
+                    $link = "sold_out.php?product_id=" . $related_product['product_id'];
+                } elseif ($related_product['status_products_name'] == 'Pre Order') {
+                    // Nếu sản phẩm là "Pre Order", chuyển hướng đến trang pre_order.php
+                    $link = "pre_order.php?product_id=" . $related_product['product_id'];
+                } else {
+                    // Nếu sản phẩm còn hàng, chuyển hướng đến trang single_product.php
+                    $link = "single_product.php?product_id=" . $related_product['product_id'];
+                }
+            ?>
 
-                    <!-- Ảnh sản phẩm thứ hai sẽ xuất hiện khi hover -->
-                    <img class="img-fluid img-second" src="./assets/images/<?php echo $related_product['product_image2']; ?>" alt="Second Image">
+                <div class="product text-center col-lg-3 col-md-6 col-sm-12">
+                    <a href="<?php echo $link; ?>" class="product-link">
+
+                        <!-- Hiển thị trạng thái sản phẩm -->
+                        <div class="product-status <?php echo strtolower(str_replace(' ', '-', $related_product['status_products_name'])); ?>">
+                            <?php echo $related_product['status_products_name']; ?>
+                        </div>
+
+                        <div class="img-container">
+                            <!-- Ảnh sản phẩm chính -->
+                            <img class="img-fluid mb-3" src="./assets/images/<?php echo $related_product['product_image']; ?>">
+
+                            <!-- Ảnh sản phẩm thứ hai sẽ xuất hiện khi hover -->
+                            <img class="img-fluid img-second" src="./assets/images/<?php echo $related_product['product_image2']; ?>" alt="Second Image">
+                        </div>
+
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                        <h3 class="p-product"><?php echo $related_product['product_name']; ?></h3>
+                        <p class="p-price"><?php echo number_format($related_product['product_price'], 0, '.', '.') . ' VND'; ?></p>
+
+                        <!-- Hiển thị giá giảm nếu có -->
+                        <p class="p-price-discount">
+                            <?php
+                            if ($related_product['product_price_discount'] != 0) {
+                                echo number_format($related_product['product_price_discount'], 0, '.', '.') . ' VND';
+                            } else {
+                                echo ''; // Nếu không có giá giảm
+                            }
+                            ?>
+                        </p>
+                    </a>
                 </div>
-                
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                
-                <h3 class="p-product"><?php echo $related_product['product_name']; ?></h3>
-                <p class="p-price"><?php echo number_format($related_product['product_price'], 0, '.', '.') . ' VND'; ?></p>
-                
-                <!-- Hiển thị giá giảm nếu có -->
-                <p class="p-price-discount">
-                    <?php 
-                    if ($related_product['product_price_discount'] != 0) {
-                        echo number_format($related_product['product_price_discount'], 0, '.', '.') . ' VND';
-                    } else {
-                        echo ''; // Nếu không có giá giảm
-                    }
-                    ?>
-                </p>
-            </a>
+
+            <?php } // Kết thúc vòng lặp 
+            ?>
         </div>
-
-        <?php } // Kết thúc vòng lặp ?>
     </div>
-</section>
+</div>
 
 
 

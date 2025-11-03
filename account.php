@@ -87,23 +87,23 @@ if (isset($_POST['update_account'])) {
                     </ol>
                 </nav>
 
-                <h3 class="font-weight-bold text-center text-uppercase">My Account</h3>
+                <h3 class="font-weight-bold text-center text-uppercase">Toài khoản của tôi</h3>
 
                 <!-- Account Menu -->
                 <ul id="account-panel" class="nav nav-pills justify-content-center mb-4">
                     <li class="nav-item">
                         <a href="my_profile.php" class="nav-link font-weight-bold" role="tab">
-                            <i class="fas fa-user-alt"></i> My Profile
+                            <i class="fa-solid fa-user mx-2"></i> Tài khoản
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="my_orders.php" class="nav-link font-weight-bold" role="tab">
-                            <i class="fas fa-shopping-bag"></i> My Orders
+                            <i class="fa-solid fa-cart-shopping mx-2"></i> Đơn hàng
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="account.php?logout=1" class="nav-link font-weight-bold" role="tab">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="fa-solid fa-right-from-bracket mx-2"></i> Đăng xuất
                         </a>
                     </li>
                 </ul>
@@ -124,7 +124,7 @@ if (isset($_POST['update_account'])) {
 
                         <!-- Account Info Fields -->
                         <div class="form-group">
-                            <label for="user_name">Username</label>
+                            <label for="user_name">Tên tài khoản</label>
                             <input type="text" id="user_name" name="user_name" class="form-control" value="<?php echo $_SESSION['user_name'] ?? ''; ?>" required>
                         </div>
 
@@ -135,21 +135,21 @@ if (isset($_POST['update_account'])) {
 
                         <!-- Password Update Fields -->
                         <div class="form-group">
-                            <label for="old_password">Old Password</label>
+                            <label for="old_password">Mật khẩu cũ</label>
                             <input type="password" id="old_password" name="old_password" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="new_password">New Password</label>
+                            <label for="new_password">Mật khẩu mới</label>
                             <input type="password" id="new_password" name="new_password" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="confirm_password">Confirm Password</label>
+                            <label for="confirm_password">Xác nhận mật khẩu</label>
                             <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                         </div>
 
                         <!-- Submit Button -->
                         <div class="form-group">
-                            <button type="submit" name="update_account" class="btn btn-primary w-100">Update Account</button>
+                            <button type="submit" name="update_account" class="btn btn-primary w-100">Cập nhật tài khoản</button>
                         </div>
                     </form>
                 </div>
