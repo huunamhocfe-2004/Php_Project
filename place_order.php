@@ -36,7 +36,9 @@ if (isset($_POST['place_order'])) {
         die("Lỗi khi thêm đơn hàng: " . $stmt->error);
     }
 
-    $order_id = $stmt->insert_id; // Lấy ID của đơn hàng vừa tạo
+    $order_id = $stmt->insert_id;
+    $_SESSION['order_id'] = $order_id; // thêm dòng này để payment.php và update có thể biết order
+
 
     // 4️⃣ Duyệt giỏ hàng và thêm từng sản phẩm vào order_items
     foreach ($_SESSION['cart'] as $item) {
