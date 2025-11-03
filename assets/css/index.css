@@ -506,3 +506,10 @@ section#search>form>.row>.row>.col-lg-12>.m-4 {
 section#search>form>.row>.row>.col-lg-12>.m-4 {
   text-transform: capitalize !important;
 }
+.list_product-wrapper>.row>.product {
+  padding: 0 !important;
+  background-color: #fff;
+}
+.list_product-wrapper>.row>.product .img-container img{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}

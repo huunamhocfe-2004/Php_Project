@@ -107,7 +107,7 @@ mysqli_close($conn); // Đóng kết nối sau khi truy vấn xong
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer text-dark">Chi tiết hơn <i
+                        <a href="\list_orders.php" class="small-box-footer text-dark">Chi tiết hơn <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

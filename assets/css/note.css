@@ -10,6 +10,7 @@
     left: -25px;
     margin: 0;
     transform: rotate(-45deg);
+    visibility: hidden;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -21,27 +22,32 @@
 .product-status.in-stock {
     background-color: #28a745;
     top: 10px;
+    visibility: visible;
 }
 
 .product-status.new-product {
     background-color: #00C4CC;
+    visibility: visible;
     top: 20px;
 }
 
 .product-status.pre-order {
     background-color: #FFC107;
     top: 15px;
+    visibility: visible;
     color: #000;
 }
 
 .product-status.sold-out {
     background-color: #555555;
+    visibility: visible;
     top: 10px;
 }
 .product-status.hot-product {
     background-color: #FF4500;
     top: 5px;
     left: -20px;
+    visibility: visible;
     padding: 5px 30px;
 }
 .badge {
