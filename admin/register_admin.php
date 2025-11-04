@@ -13,29 +13,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admin_email = $_POST['admin_email'];
     $admin_password = password_hash($_POST['admin_password'], PASSWORD_DEFAULT);
 
-    // Kiểm tra email đã tồn tại chưa
-    $check_sql = "SELECT * FROM admins WHERE admin_email = ?";
-    $stmt = $conn->prepare($check_sql);
-    $stmt->bind_param("s", $admin_email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $error_message = "Email đã được sử dụng. Vui lòng chọn email khác.";
+    // ✅ Kiểm tra định dạng email hợp lệ trước khi kiểm tra trùng
+    if (!filter_var($admin_email, FILTER_VALIDATE_EMAIL)) {
+        $error_message = "Định dạng email không hợp lệ!";
     } else {
-        // Thêm tài khoản mới
-        $sql = "INSERT INTO admins (admin_name, admin_email, admin_password) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sss", $admin_name, $admin_email, $admin_password);
+        // Kiểm tra email đã tồn tại chưa
+        $check_sql = "SELECT * FROM admins WHERE admin_email = ?";
+        $stmt = $conn->prepare($check_sql);
+        $stmt->bind_param("s", $admin_email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        if ($stmt->execute()) {
-            $_SESSION['admin_name'] = $admin_name;
-            $_SESSION['admin_email'] = $admin_email;
-            $_SESSION['logged_in'] = true;
-            header("Location: dashboard.php");
-            exit;
+        if ($result->num_rows > 0) {
+            $error_message = "Email đã được sử dụng. Vui lòng chọn email khác.";
         } else {
-            $error_message = "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.";
+            // Thêm tài khoản mới
+            $sql = "INSERT INTO admins (admin_name, admin_email, admin_password) VALUES (?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sss", $admin_name, $admin_email, $admin_password);
+
+            if ($stmt->execute()) {
+                $_SESSION['admin_name'] = $admin_name;
+                $_SESSION['admin_email'] = $admin_email;
+                $_SESSION['logged_in'] = true;
+                header("Location: dashboard.php");
+                exit;
+            } else {
+                $error_message = "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.";
+            }
         }
     }
 }

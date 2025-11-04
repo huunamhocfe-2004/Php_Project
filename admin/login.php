@@ -1,7 +1,4 @@
-
-
-
- <?php
+<?php
 session_start();
 
 // Kết nối cơ sở dữ liệu
@@ -16,28 +13,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admin_email = $_POST['admin_email'];
     $admin_password = $_POST['admin_password'];
 
-    // Truy vấn thông tin tài khoản
-    $sql = "SELECT * FROM admins WHERE admin_email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $admin_email); 
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-
-        // Xác thực mật khẩu
-        if (password_verify($admin_password, $row['admin_password'])) {
-            $_SESSION['admin_name'] = $row['admin_name']; // Lưu tên
-            $_SESSION['admin_email'] = $row['admin_email']; // Lưu email
-            $_SESSION['logged_in'] = true; // Đánh dấu đã đăng nhập
-            header("Location: dashboard.php");
-            exit;
-        } else {
-            $error_message = "Mật khẩu không đúng!";
-        }
+    // ✅ Kiểm tra định dạng email hợp lệ
+    if (!filter_var($admin_email, FILTER_VALIDATE_EMAIL)) {
+        header("location: login.php?error=Địa chỉ email không hợp lệ");
+        exit();
     } else {
-        $error_message = "Email không tồn tại!";
+        // Truy vấn thông tin tài khoản
+        $sql = "SELECT * FROM admins WHERE admin_email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $admin_email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            // Xác thực mật khẩu
+            if (password_verify($admin_password, $row['admin_password'])) {
+                $_SESSION['admin_name'] = $row['admin_name']; // Lưu tên
+                $_SESSION['admin_email'] = $row['admin_email']; // Lưu email
+                $_SESSION['logged_in'] = true; // Đánh dấu đã đăng nhập
+                header("Location: dashboard.php");
+                exit;
+            } else {
+                $error_message = "Mật khẩu không đúng!";
+            }
+        } else {
+            $error_message = "Email không tồn tại!";
+        }
     }
 }
 ?>
